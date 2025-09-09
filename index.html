@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alice Martinazzoli - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Animazione di Caricamento -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="rocket-container">
+            <div class="rocket">🚀</div>
+        </div>
+        <div class="loading-text">Caricamento Portfolio...</div>
+        <div class="loading-bar">
+            <div class="loading-progress"></div>
+        </div>
+    </div>
+
+    <!-- Overlay per Menu Mobile -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <div class="game-screen">
+        <!-- Header -->
+<header class="game-header">
+    <div class="game-title" id="headerTitle">ALICE MARTINAZZOLI</div>
+    
+    <!-- Hamburger Button per Mobile -->
+    <button class="hamburger-btn" id="hamburgerBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+</header>
+
+        <!-- Menu Laterale per Mobile / Orizzontale per Desktop -->
+        <nav class="game-menu" id="gameMenu">
+            <div class="menu-content">
+                <button class="menu-btn active" data-section="home">HOME</button>
+                <button class="menu-btn" data-section="about">ABOUT</button>
+                <button class="menu-btn" data-section="projects">PROGETTI</button>
+                <button class="menu-btn" data-section="skills">SKILLS</button>
+                <button class="menu-btn" data-section="cv">CV</button>
+                <button class="menu-btn" data-section="contact">CONTATTI</button>
+            </div>
+        </nav>
+
+        <!-- Content -->
+        <main class="game-world">
+            <!-- Home Section -->
+            <section id="home" class="game-section active">
+                <div class="hero-game">
+                    <div class="player-character">
+                        <div class="character-sprite">
+                            <!-- Sostituisci questa emoji con la tua illustrazione personalizzata -->
+                            <!-- <img src="img/alice_illustration.svg" alt="Alice Illustration" class="character-illustration"> -->
+                            👩‍💻
+                        </div>
+                        <div class="character-name">CIAO! SONO ALICE MARTINAZZOLI</div>
+                        <div class="character-class">Graphic Designer con 8 anni di esperienza e Junior UX/UI Designer</div>
+                    </div>
+                    
+                    <div class="intro-text">
+                        <h1 class="game-heading">BENVENUTO/A NEL MIO MONDO!</h1>
+                        <p class="game-description">
+                            Esplora il mio universo del design dove creatività, strategia e user experience si incontrano.
+                            Dal graphic design tradizionale all'UX/UI del futuro, ogni progetto è una nuova avventura!
+                        </p>
+                    </div>
+                    
+                    <div class="power-ups">
+                        <div class="power-up clickable" data-target="projects">
+                            <span class="power-name">GRAPHIC DESIGN</span>
+                            <span class="power-subtitle">Clicca per vedere i progetti</span>
+                        </div>
+                        <div class="power-up clickable" data-target="projects">
+                            <span class="power-name">UX/UI DESIGN</span>
+                            <span class="power-subtitle">Clicca per vedere i progetti</span>
+                        </div>
+                        <div class="power-up clickable" data-target="projects">
+                            <span class="power-name">AWARD WINNER</span>
+                            <span class="power-subtitle">Clicca per vedere i progetti</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Section -->
+            <section id="about" class="game-section">
+                <h2 class="section-title">Chi Sono</h2>
+                
+                <div class="character-stats">
+                    <div class="about-hero">
+                        <div class="profile-image-container">
+                            <div class="profile-image">
+                                <img src="img/alice_martinazzoli.jpg" alt="Alice Martinazzoli" class="profile-photo">
+                                <div class="photo-frame"></div>
+                            </div>
+                            <div class="profile-status">
+                                <div class="status-badge">Creative Designer</div>
+                            </div>
+                        </div>
+                        
+                        <div class="about-intro">
+                            <h3 class="intro-title">Alice Martinazzoli</h3>
+                            <p class="intro-subtitle">Graphic Designer & UX/UI Designer</p>
+                            <p class="intro-description">
+                                Creo esperienze visive che raccontano storie e connettono le persone. 
+                                La mia passione per il design nasce dall'unione tra creatività, strategia 
+                                e tecnologia, sempre con l'obiettivo di trasformare idee in soluzioni 
+                                visive impattanti e funzionali.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="stats-grid">
+                        <h3 class="stats-title">Le Mie Competenze</h3>
+                        <div class="stat-bar">
+                            <span class="stat-label">GRAPHIC DESIGN</span>
+                            <div class="stat-progress">
+                                <div class="stat-fill" data-width="95%"></div>
+                            </div>
+                            <span class="stat-percentage">95%</span>
+                        </div>
+                        <div class="stat-bar">
+                            <span class="stat-label">UX/UI DESIGN</span>
+                            <div class="stat-progress">
+                                <div class="stat-fill" data-width="85%"></div>
+                            </div>
+                            <span class="stat-percentage">85%</span>
+                        </div>
+                        <div class="stat-bar">
+                            <span class="stat-label">BRAND IDENTITY</span>
+                            <div class="stat-progress">
+                                <div class="stat-fill" data-width="90%"></div>
+                            </div>
+                            <span class="stat-percentage">90%</span>
+                        </div>
+                        <div class="stat-bar">
+                            <span class="stat-label">CREATIVITÀ</span>
+                            <div class="stat-progress">
+                                <div class="stat-fill" data-width="98%"></div>
+                            </div>
+                            <span class="stat-percentage">98%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="character-story">
+                        <h3 class="story-title">La Mia Storia</h3>
+                        <div class="story-content">
+                            <p>
+                                Diplomata in Grafica Pubblicitaria presso l'International School of Comics, 
+                                ho completato un Master in UX/UI Design presso Start2Impact University nel 2025.
+                            </p>
+                            <p>
+                                Nel 2025 sono stata finalista al concorso "Talenti Accesi" di Torcha per il 
+                                restyling creativo della lattina BOEM, un progetto che ha consolidato il mio 
+                                approccio al design come strumento narrativo e strategico.
+                            </p>
+                            <p>
+                                La mia esperienza spazia dal cinema (set internazionali) alla scrittura 
+                                ("Gino Zamprioli: Make-up Artist dal 1969"), con competenze tecniche 
+                                acquisite anche come Salesforce Developer nel 2023.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section id="projects" class="game-section">
+                <h2 class="section-title">MISSIONI COMPLETATE</h2>
+                <div class="missions-grid">
+                    <div class="mission-card completed legendary">
+                        <div class="mission-header">
+                            <span class="mission-status">🏆 FINALISTA</span>
+                            <span class="mission-reward">+1000 XP</span>
+                        </div>
+                        <h3 class="mission-title">Restyling Lattina BOEM</h3>
+                        <p class="mission-description">
+                            Finalista al concorso "Talenti Accesi" di Torcha nel 2025 con una proposta 
+                            creativa per il restyling della lattina BOEM, selezionata per originalità e impatto visivo.
+                        </p>
+                        <div class="mission-tech">
+                            <span class="tech-badge">Brand Design</span>
+                            <span class="tech-badge">Package Design</span>
+                            <span class="tech-badge">Creative Strategy</span>
+                        </div>
+                        <button class="mission-btn">VISUALIZZA DETTAGLI</button>
+                    </div>
+                    
+                    <div class="mission-card completed epic">
+                        <div class="mission-header">
+                            <span class="mission-status">📚 PUBBLICATO</span>
+                            <span class="mission-reward">+800 XP</span>
+                        </div>
+                        <h3 class="mission-title">"Gino Zamprioli: Make-up Artist dal 1969"</h3>
+                        <p class="mission-description">
+                            Progetto editoriale completo dedicato a una figura iconica del mondo del make-up. 
+                            Dalla ricerca alla realizzazione grafica del libro.
+                        </p>
+                        <div class="mission-tech">
+                            <span class="tech-badge">Editorial Design</span>
+                            <span class="tech-badge">Layout</span>
+                            <span class="tech-badge">Typography</span>
+                        </div>
+                        <button class="mission-btn">VISUALIZZA DETTAGLI</button>
+                    </div>
+                    
+                    <div class="mission-card completed epic">
+                        <div class="mission-header">
+                            <span class="mission-status">🎯 UX/UI</span>
+                            <span class="mission-reward">+900 XP</span>
+                        </div>
+                        <h3 class="mission-title">Jojob RT - Complete UX/UI Project</h3>
+                        <p class="mission-description">
+                            Progetto UX/UI completo: dalla Discovery all'UI finale. Include analisi competitors, 
+                            personas, user journey, accessibilità, wireframe e interfacce responsive.
+                        </p>
+                        <div class="mission-tech">
+                            <span class="tech-badge">UX Research</span>
+                            <span class="tech-badge">Accessibility</span>
+                            <span class="tech-badge">Wireframing</span>
+                            <span class="tech-badge">UI Design</span>
+                        </div>
+                        <button class="mission-btn">VISUALIZZA DETTAGLI</button>
+                    </div>
+                    
+                    <div class="mission-card completed rare">
+                        <div class="mission-header">
+                            <span class="mission-status">🎬 CINETATTOO</span>
+                            <span class="mission-reward">+700 XP</span>
+                        </div>
+                        <h3 class="mission-title">Custom Fake Tattoos - Birra Moretti</h3>
+                        <p class="mission-description">
+                            Progetto creativo per la realizzazione di tatuaggi finti personalizzati per lo spot 
+                            pubblicitario della Birra Moretti. Design realistici e applicazione professionale.
+                        </p>
+                        <div class="mission-tech">
+                            <span class="tech-badge">Custom Design</span>
+                            <span class="tech-badge">Advertising</span>
+                            <span class="tech-badge">Tattoo Art</span>
+                        </div>
+                        <button class="mission-btn">VISUALIZZA DETTAGLI</button>
+                    </div>
+                    
+                    <div class="mission-card completed rare">
+                        <div class="mission-header">
+                            <span class="mission-status">🌱 LOGO</span>
+                            <span class="mission-reward">+600 XP</span>
+                        </div>
+                        <h3 class="mission-title">Planty of Food</h3>
+                        <p class="mission-description">
+                            Redesign del logo Planty of Food per promuovere un'alimentazione 
+                            plant based sostenibile e accessibile.
+                        </p>
+                        <div class="mission-tech">
+                            <span class="tech-badge">Logo Design</span>
+                            <span class="tech-badge">Brand Identity</span>
+                            <span class="tech-badge">Sustainability</span>
+                        </div>
+                        <button class="mission-btn">VISUALIZZA DETTAGLI</button>
+                    </div>
+                    
+                    <div class="mission-card completed rare">
+                        <div class="mission-header">
+                            <span class="mission-status">👔 LOGO</span>
+                            <span class="mission-reward">+500 XP</span>
+                        </div>
+                        <h3 class="mission-title">Officina Spatti</h3>
+                        <p class="mission-description">
+                            Redesign completo del marchio "Officina Spatti" per il settore calzature, 
+                            creando un'identità moderna e distintiva.
+                        </p>
+                        <div class="mission-tech">
+                            <span class="tech-badge">Logo Design</span>
+                            <span class="tech-badge">Brand Redesign</span>
+                            <span class="tech-badge">Fashion</span>
+                        </div>
+                        <button class="mission-btn">VISUALIZZA DETTAGLI</button>
+                    </div>
+                    
+                    <div class="mission-card completed rare">
+                        <div class="mission-header">
+                            <span class="mission-status">🎬 COMPLETATA</span>
+                            <span class="mission-reward">+600 XP</span>
+                        </div>
+                        <h3 class="mission-title">Progetti Cinematografici Internazionali</h3>
+                        <p class="mission-description">
+                            Esperienza su set cinematografici internazionali, sviluppando competenze 
+                            nell'ambito della comunicazione visiva e del design per il cinema.
+                        </p>
+                        <div class="mission-tech">
+                            <span class="tech-badge">Film Design</span>
+                            <span class="tech-badge">Visual Communication</span>
+                            <span class="tech-badge">Set Design</span>
+                        </div>
+                        <button class="mission-btn">VISUALIZZA DETTAGLI</button>
+                    </div>
+                    
+                    <div class="mission-card completed common">
+                        <div class="mission-header">
+                            <span class="mission-status">📱 COMPLETATA</span>
+                            <span class="mission-reward">+400 XP</span>
+                        </div>
+                        <h3 class="mission-title">Social Media Design</h3>
+                        <p class="mission-description">
+                            Creazione di contenuti grafici per social media, gestione dell'immagine 
+                            coordinata digitale e sviluppo di campagne visual per diversi brand.
+                        </p>
+                        <div class="mission-tech">
+                            <span class="tech-badge">Social Media</span>
+                            <span class="tech-badge">Content Design</span>
+                            <span class="tech-badge">Digital Marketing</span>
+                        </div>
+                        <button class="mission-btn">VISUALIZZA DETTAGLI</button>
+                    </div>
+                    
+                    <div class="mission-card completed epic">
+                        <div class="mission-header">
+                            <span class="mission-status">✅ COMPLETATA</span>
+                            <span class="mission-reward">+1200 XP</span>
+                        </div>
+                        <h3 class="mission-title">Master UX/UI Design</h3>
+                        <p class="mission-description">
+                            Master completato presso Start2Impact University nel 2025, con specializzazione 
+                            in UX/UI Design e metodologie user-centered.
+                        </p>
+                        <div class="mission-tech">
+                            <span class="tech-badge">UX Research</span>
+                            <span class="tech-badge">UI Design</span>
+                            <span class="tech-badge">Prototyping</span>
+                        </div>
+                        <button class="mission-btn">VISUALIZZA DETTAGLI</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills Section -->
+            <section id="skills" class="game-section">
+                <h2 class="section-title">ABILITÀ & POWER-UPS</h2>
+                <div class="skills-inventory">
+                    <div class="skill-category">
+                        <h3 class="category-title">DESIGN TOOLS</h3>
+                        <div class="skill-items">
+                            <div class="skill-item legendary">
+                                <span class="skill-name">Adobe Creative Suite</span>
+                                <span class="skill-level">MASTER</span>
+                            </div>
+                            <div class="skill-item epic">
+                                <span class="skill-name">Figma</span>
+                                <span class="skill-level">EXPERT</span>
+                            </div>
+                            <div class="skill-item rare">
+                                <span class="skill-name">Sketch</span>
+                                <span class="skill-level">ADVANCED</span>
+                            </div>
+                            <div class="skill-item rare">
+                                <span class="skill-name">Miro</span>
+                                <span class="skill-level">ADVANCED</span>
+                            </div>
+                            <div class="skill-item common">
+                                <span class="skill-name">CapCut</span>
+                                <span class="skill-level">INTERMEDIATE</span>
+                            </div>
+                            <div class="skill-item common">
+                                <span class="skill-name">Edits</span>
+                                <span class="skill-level">INTERMEDIATE</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3 class="category-title">SPECIALIZZAZIONI</h3>
+                        <div class="skill-items">
+                            <div class="skill-item legendary">
+                                <span class="skill-name">Graphic Design</span>
+                                <span class="skill-level">MASTER</span>
+                            </div>
+                            <div class="skill-item epic">
+                                <span class="skill-name">UX/UI Design</span>
+                                <span class="skill-level">EXPERT</span>
+                            </div>
+                            <div class="skill-item epic">
+                                <span class="skill-name">Brand Identity</span>
+                                <span class="skill-level">EXPERT</span>
+                            </div>
+                            <div class="skill-item rare">
+                                <span class="skill-name">Package Design</span>
+                                <span class="skill-level">ADVANCED</span>
+                            </div>
+                            <div class="skill-item rare">
+                                <span class="skill-name">Editorial Design</span>
+                                <span class="skill-level">ADVANCED</span>
+                            </div>
+                            <div class="skill-item rare">
+                                <span class="skill-name">Copywriting</span>
+                                <span class="skill-level">ADVANCED</span>
+                            </div>
+                            <div class="skill-item common">
+                                <span class="skill-name">Social Media</span>
+                                <span class="skill-level">INTERMEDIATE</span>
+                            </div>
+                            <div class="skill-item common">
+                                <span class="skill-name">Salesforce Development</span>
+                                <span class="skill-level">BASIC</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3 class="category-title">COMPETENZE UX/UI</h3>
+                        <div class="skill-items">
+                            <div class="skill-item epic">
+                                <span class="skill-name">UX Research</span>
+                                <span class="skill-level">EXPERT</span>
+                            </div>
+                            <div class="skill-item epic">
+                                <span class="skill-name">Accessibilità</span>
+                                <span class="skill-level">EXPERT</span>
+                            </div>
+                            <div class="skill-item epic">
+                                <span class="skill-name">Wireframing</span>
+                                <span class="skill-level">EXPERT</span>
+                            </div>
+                            <div class="skill-item rare">
+                                <span class="skill-name">User-Centered Design</span>
+                                <span class="skill-level">ADVANCED</span>
+                            </div>
+                            <div class="skill-item rare">
+                                <span class="skill-name">Prototyping</span>
+                                <span class="skill-level">ADVANCED</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3 class="category-title">SVILUPPO WEB</h3>
+                        <div class="skill-items">
+                            <div class="skill-item common">
+                                <span class="skill-name">HTML</span>
+                                <span class="skill-level">BASIC</span>
+                            </div>
+                            <div class="skill-item common">
+                                <span class="skill-name">CSS</span>
+                                <span class="skill-level">BASIC</span>
+                            </div>
+                            <div class="skill-item common">
+                                <span class="skill-name">JavaScript</span>
+                                <span class="skill-level">BASIC</span>
+                            </div>
+                            <div class="skill-item common">
+                                <span class="skill-name">Java</span>
+                                <span class="skill-level">BASIC</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3 class="category-title">ACHIEVEMENTS</h3>
+                        <div class="skill-items">
+                            <div class="skill-item legendary">
+                                <span class="skill-name">Diploma Grafica Pubblicitaria</span>
+                                <span class="skill-level">COMPLETED</span>
+                            </div>
+                            <div class="skill-item epic">
+                                <span class="skill-name">Master UX/UI Design</span>
+                                <span class="skill-level">COMPLETED</span>
+                            </div>
+                            <div class="skill-item epic">
+                                <span class="skill-name">Finalista "Talenti Accesi"</span>
+                                <span class="skill-level">2025</span>
+                            </div>
+                            <div class="skill-item rare">
+                                <span class="skill-name">Autrice Libro</span>
+                                <span class="skill-level">PUBLISHED</span>
+                            </div>
+                            <div class="skill-item rare">
+                                <span class="skill-name">Cinema Internazionale</span>
+                                <span class="skill-level">EXPERIENCED</span>
+                            </div>
+                            <div class="skill-item common">
+                                <span class="skill-name">Salesforce Certified</span>
+                                <span class="skill-level">2023</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CV Section -->
+            <section id="cv" class="game-section">
+                <h2 class="section-title">CURRICULUM VITAE</h2>
+                <div class="cv-container">
+                    <div class="cv-header">
+                        <div class="cv-personal-info">
+                            <h3 class="cv-name">Alice Martinazzoli</h3>
+                            <p class="cv-title">Graphic Designer - UX/UI Designer</p>
+                            <div class="cv-contacts">
+                                <div class="cv-contact-item">
+                                    <span class="contact-icon">📧</span>
+                                    <span>alicemartinazzoli95@icloud.com</span>
+                                </div>
+                                <div class="cv-contact-item">
+                                    <span class="contact-icon">📱</span>
+                                    <span>+39 346 1732527</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cv-download">
+                            <button class="download-btn" id="downloadCvBtn">
+                                <span class="btn-icon">📄</span>
+                                <span>SCARICA CV PDF</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="cv-grid">
+                        <div class="cv-section experience">
+                            <h3 class="cv-section-title">ESPERIENZA LAVORATIVA</h3>
+                            
+                            <div class="cv-item">
+                                <div class="cv-item-header">
+                                    <h4>Graphic Designer</h4>
+                                    <span class="cv-period">2023 - 2024</span>
+                                </div>
+                                <p class="cv-company">LGA Service - Roma</p>
+                                <ul class="cv-description">
+                                    <li>Sviluppo di materiali di marketing, presentazioni e comunicazioni visive</li>
+                                    <li>Miglioramento dell'immagine aziendale attraverso design coeso e d'impatto</li>
+                                    <li>Combinazione dell'eredità aziendale con tendenze del design contemporaneo</li>
+                                </ul>
+                            </div>
+
+                            <div class="cv-item">
+                                <div class="cv-item-header">
+                                    <h4>Graphic Designer</h4>
+                                    <span class="cv-period">2022</span>
+                                </div>
+                                <p class="cv-company">Panorama Films srl - Roma</p>
+                                <ul class="cv-description">
+                                    <li>Esperienza internazionale per la serie TV "Concordia" (ZDF STUDIOS)</li>
+                                    <li>Creazione di packaging, etichette, segnaletica e grafiche per veicoli</li>
+                                    <li>Collaborazione in contesto multiculturale con scadenze strette</li>
+                                    <li>Contributo al storytelling visivo cinematografico</li>
+                                </ul>
+                            </div>
+
+                            <div class="cv-item">
+                                <div class="cv-item-header">
+                                    <h4>Graphic Designer</h4>
+                                    <span class="cv-period">2018 - 2021</span>
+                                </div>
+                                <p class="cv-company">MP Partners - Costa Volpino (BG)</p>
+                                <ul class="cv-description">
+                                    <li>Crescita da Junior a referente Comunicazione e Marketing</li>
+                                    <li>Sviluppo di campagne visive, materiali editoriali e branding</li>
+                                    <li>Transizione organica verso gestione Marketing</li>
+                                    <li>Creazione di visual accattivanti e design come Graphic Designer</li>
+                                    <li>Definizione ed esecuzione di strategie di marketing</li>
+                                </ul>
+                            </div>
+
+                            <div class="cv-item">
+                                <div class="cv-item-header">
+                                    <h4>Social Media Manager</h4>
+                                    <span class="cv-period">2017</span>
+                                </div>
+                                <p class="cv-company">Cassette Venturi - Darfo B.T. (BS)</p>
+                                <ul class="cv-description">
+                                    <li>Sviluppo piano editoriale strategico per social media</li>
+                                    <li>Creazione grafiche e shooting fotografici prodotti</li>
+                                    <li>Gestione canali Facebook e Instagram</li>
+                                    <li>Programmazione pubblicazioni per massimizzare l'engagement</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="cv-section education">
+                            <h3 class="cv-section-title">ISTRUZIONE</h3>
+                            
+                            <div class="cv-item">
+                                <div class="cv-item-header">
+                                    <h4>Master UX/UI Designer</h4>
+                                    <span class="cv-period">2025</span>
+                                </div>
+                                <p class="cv-company">Start2Impact University</p>
+                                <p class="cv-description-text">
+                                    Master completato con esperienza comprovata in Discovery, Accessibilità e Wireframing, 
+                                    utilizzando metodologie user-centered per ottimizzare l'esperienza utente.
+                                </p>
+                            </div>
+
+                            <div class="cv-item">
+                                <div class="cv-item-header">
+                                    <h4>Salesforce Developer</h4>
+                                    <span class="cv-period">2023</span>
+                                </div>
+                                <p class="cv-company">Generation Italy</p>
+                                <p class="cv-description-text">
+                                    Corso intensivo in Salesforce Development con focus sul back-end, 
+                                    acquisendo competenze tecniche nel CRM.
+                                </p>
+                            </div>
+
+                            <div class="cv-item">
+                                <div class="cv-item-header">
+                                    <h4>UI Designer</h4>
+                                    <span class="cv-period">2019</span>
+                                </div>
+                                <p class="cv-company">Lacerba.io</p>
+                                <p class="cv-description-text">
+                                    Corso specializzato in User Interface Design, approfondendo principi di design visivo,
+                                    tipografia, teoria del colore e progettazione di interfacce responsive.
+                                </p>
+                            </div>
+
+                            <div class="cv-item">
+                                <div class="cv-item-header">
+                                    <h4>Diploma Grafica Pubblicitaria</h4>
+                                    <span class="cv-period">2015 - 2018</span>
+                                </div>
+                                <p class="cv-company">International School of Comics - Brescia</p>
+                                <p class="cv-description-text">
+                                    Formazione completa in grafica pubblicitaria, design editoriale, brand identity,
+                                    packaging design e comunicazione visiva.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="game-section">
+                <h2 class="section-title">CONTATTI</h2>
+                <div class="contact-quest">
+                    <div class="quest-giver">
+                        <div class="npc-avatar">💬</div>
+                        <div class="speech-bubble">
+                            <h3>Iniziamo una nuova avventura!</h3>
+                            <p>Hai un progetto in mente? Parliamone! Sono sempre alla ricerca di nuove sfide creative.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-options">
+                        <a href="mailto:alicemartinazzoli95@icloud.com" class="contact-btn primary">
+                            <span>📧</span>
+                            <span>INVIA EMAIL</span>
+                        </a>
+                        <a href="https://www.behance.net/alicemarti563e" target="_blank" class="contact-btn secondary">
+                            <span>🎨</span>
+                            <span>PORTFOLIO BEHANCE</span>
+                        </a>
+                        <a href="tel:+393461732527" class="contact-btn tertiary">
+                            <span>📱</span>
+                            <span>CHIAMA</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <!-- Footer Compatto -->
+<footer class="game-footer">
+    <div class="footer-compact">
+        <div class="footer-left">
+            <p class="footer-copyright">© 2025 Alice Martinazzoli</p>
+        </div>
+        
+        <div class="footer-center">
+            <p class="footer-thanks">❤️ Grazie per aver visitato il mio portfolio!</p>
+        </div>
+        
+        <div class="footer-right">
+            <a href="mailto:alicemartinazzoli95@icloud.com" class="footer-link-icon" title="Email">
+                <span class="icon">📧</span>
+                <span class="text">Email</span>
+            </a>
+            <a href="https://www.linkedin.com/in/alice-martinazzoli" target="_blank" class="footer-link-icon" title="LinkedIn">
+                <span class="icon">💼</span>
+                <span class="text">LinkedIn</span>
+            </a>
+            <a href="https://www.behance.net/alicemarti563e" target="_blank" class="footer-link-icon" title="Behance">
+                <span class="icon">🎨</span>
+                <span class="text">Behance</span>
+            </a>
+            <a href="tel:+393461732527" class="footer-link-icon" title="Telefono">
+                <span class="icon">📱</span>
+                <span class="text">Telefono</span>
+            </a>
+        </div>
+    </div>
+</footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
