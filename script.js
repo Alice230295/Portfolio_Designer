@@ -1,4 +1,4 @@
-// Portfolio Alice Martinazzoli - JavaScript Finale con Caricamento Veloce
+// Portfolio Alice Martinazzoli - JavaScript Finale con Animazioni Homepage
 
 console.log('🚀 Caricamento Portfolio Alice...');
 
@@ -65,6 +65,7 @@ function initPortfolio() {
     initCVDownload();
     initPowerUpsNavigation();
     initHeaderClick();
+    initScrollAnimations(); // Nuova funzione per animazioni scroll
     
     setTimeout(function() {
         const buttons = document.querySelectorAll('.menu-btn');
@@ -78,6 +79,8 @@ function initPortfolio() {
             console.log('📱 Menu laterale mobile attivo');
             console.log('📄 Download CV PDF funzionante');
             console.log('🎯 Power-ups cliccabili attivi');
+            console.log('🏠 Header cliccabile per tornare alla home');
+            console.log('🎨 Animazioni homepage attive');
             console.log('⚡ Tempo di caricamento: 1 secondo');
         }
     }, 1000);
@@ -111,6 +114,8 @@ function initPowerUpsNavigation() {
     
     console.log('🎯 Power-ups cliccabili inizializzati');
 }
+
+// HEADER CLICCABILE PER TORNARE ALLA HOME
 function initHeaderClick() {
     const headerTitle = document.getElementById('headerTitle');
     if (headerTitle) {
@@ -137,11 +142,41 @@ function initHeaderClick() {
                 // Scrolla verso l'alto
                 window.scrollTo(0, 0);
                 
+                // Riavvia animazioni homepage
+                setTimeout(function() {
+                    animateHomePage();
+                }, 100);
+                
                 console.log('🏠 Navigazione verso Home tramite header');
             }
         });
         console.log('🎯 Header cliccabile inizializzato');
     }
+}
+
+// ANIMAZIONI SCROLL HOMEPAGE
+function initScrollAnimations() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                if (entry.target.classList.contains('intro-text')) {
+                    animateHomePage();
+                }
+            }
+        });
+    }, observerOptions);
+    
+    const introText = document.querySelector('.intro-text');
+    if (introText) {
+        observer.observe(introText);
+    }
+    
+    console.log('📜 Animazioni scroll inizializzate');
 }
 
 // DOWNLOAD CV PDF
@@ -743,6 +778,9 @@ function initSwipeNavigation() {
 // ANIMAZIONI
 function handleSectionAnimations(sectionName) {
     switch(sectionName) {
+        case 'home':
+            animateHomePage();
+            break;
         case 'about':
             animateStats();
             break;
@@ -759,6 +797,22 @@ function handleSectionAnimations(sectionName) {
             animateContact();
             break;
     }
+}
+
+// ANIMAZIONE HOMEPAGE
+function animateHomePage() {
+    // Reset delle animazioni
+    const animatedElements = document.querySelectorAll('.welcome-title span, .game-description, .power-up, .character-illustration');
+    
+    animatedElements.forEach(function(element) {
+        // Rimuovi e riapplica l'animazione
+        const animation = window.getComputedStyle(element).animation;
+        element.style.animation = 'none';
+        element.offsetHeight; // Trigger reflow
+        element.style.animation = null;
+    });
+    
+    console.log('🎨 Animazioni homepage riavviate');
 }
 
 function animateStats() {
@@ -828,68 +882,70 @@ function animateContact() {
         avatar.style.transform = 'scale(0)';
         setTimeout(function() {
             avatar.style.transition = 'transform 0.5s ease';
+            avatar.style
             avatar.style.transform = 'scale(1)';
-        }, 200);
-    }
-    
-    if (bubble) {
-        bubble.style.opacity = '0';
-        bubble.style.transform = 'translateX(-30px)';
-        setTimeout(function() {
-            bubble.style.transition = 'all 0.5s ease';
-            bubble.style.opacity = '1';
-            bubble.style.transform = 'translateX(0)';
-        }, 400);
-    }
-    
-    buttons.forEach(function(btn, index) {
-        btn.style.opacity = '0';
-        btn.style.transform = 'translateY(20px)';
-        
-        setTimeout(function() {
-            btn.style.transition = 'all 0.4s ease';
-            btn.style.opacity = '1';
-            btn.style.transform = 'translateY(0)';
-        }, 600 + (index * 100));
-    });
+       }, 200);
+   }
+   
+   if (bubble) {
+       bubble.style.opacity = '0';
+       bubble.style.transform = 'translateX(-30px)';
+       setTimeout(function() {
+           bubble.style.transition = 'all 0.5s ease';
+           bubble.style.opacity = '1';
+           bubble.style.transform = 'translateX(0)';
+       }, 400);
+   }
+   
+   buttons.forEach(function(btn, index) {
+       btn.style.opacity = '0';
+       btn.style.transform = 'translateY(20px)';
+       
+       setTimeout(function() {
+           btn.style.transition = 'all 0.4s ease';
+           btn.style.opacity = '1';
+           btn.style.transform = 'translateY(0)';
+       }, 600 + (index * 100));
+   });
 }
 
 function initAnimations() {
-    const sprite = document.querySelector('.character-sprite');
-    if (sprite) {
-        setInterval(function() {
-            sprite.style.transform = 'scale(1.05)';
-            setTimeout(function() {
-                sprite.style.transform = 'scale(1)';
-            }, 1000);
-        }, 4000);
-    }
-    
-    const aboutSection = document.getElementById('about');
-    if (aboutSection && aboutSection.classList.contains('active')) {
-        setTimeout(animateStats, 1000);
-    }
+   const sprite = document.querySelector('.character-sprite');
+   if (sprite) {
+       setInterval(function() {
+           sprite.style.transform = 'scale(1.05)';
+           setTimeout(function() {
+               sprite.style.transform = 'scale(1)';
+           }, 1000);
+       }, 4000);
+   }
+   
+   const aboutSection = document.getElementById('about');
+   if (aboutSection && aboutSection.classList.contains('active')) {
+       setTimeout(animateStats, 1000);
+   }
 }
 
 // GESTIONE PROGETTI
 function initProjectHandlers() {
-    document.addEventListener('click', function(e) {
-        if (e.target.classList.contains('mission-btn')) {
-            const card = e.target.closest('.mission-card');
-            const title = card.querySelector('.mission-title').textContent;
-            
-            const projectLinks = {
-                'Restyling Lattina BOEM': 'https://www.behance.net/gallery/233194551/Rebranding-BOEM-can',
-                '"Gino Zamprioli: Make-up Artist dal 1969"': 'https://www.behance.net/gallery/107566109/Gino-Zamprioli-book',
-                'Jojob RT - Complete UX/UI Project': createJojobModal,
-                'Custom Fake Tattoos - Birra Moretti': 'https://www.behance.net/gallery/169297515/Custom-fake-tattoos-for-adv-Birra-Moretti',
-                'Planty of Food': 'https://www.behance.net/gallery/232995341/Logo-Design-Planty-of-Food',
-                'Officina Spatti': 'https://www.behance.net/gallery/94515697/Officina-Spatti-Calzature',
-                'Progetti Cinematografici Internazionali': 'https://www.imdb.com/it/name/nm14138071/',
-                'Social Media Design': 'https://www.behance.net/alicemarti563e',
-                'Master UX/UI Design': 'https://www.behance.net/alcemarti563e'
+   document.addEventListener('click', function(e) {
+       if (e.target.classList.contains('mission-btn')) {
+           const card = e.target.closest('.mission-card');
+           const title = card.querySelector('.mission-title').textContent;
+           
+           const projectLinks = {
+               'Restyling Lattina BOEM': 'https://www.behance.net/gallery/233194551/Rebranding-BOEM-can',
+               '"Gino Zamprioli: Make-up Artist dal 1969"': 'https://www.behance.net/gallery/107566109/Gino-Zamprioli-book',
+               'Jojob RT - Complete UX/UI Project': createJojobModal,
+               'Custom Fake Tattoos - Birra Moretti': 'https://www.behance.net/gallery/169297515/Custom-fake-tattoos-for-adv-Birra-Moretti',
+               'Planty of Food': 'https://www.behance.net/gallery/232995341/Logo-Design-Planty-of-Food',
+               'Officina Spatti': 'https://www.behance.net/gallery/94515697/Officina-Spatti-Calzature',
+               'Progetti Cinematografici Internazionali': 'https://www.imdb.com/it/name/nm14138071/',
+               'Social Media Design': 'https://www.behance.net/alicemarti563e',
+               'Master UX/UI Design': 'https://www.behance.net/alicemarti563e'
            };
-            const link = projectLinks[title];
+           
+           const link = projectLinks[title];
            
            if (typeof link === 'function') {
                link();
@@ -1020,5 +1076,6 @@ console.log('📄 Download CV PDF tramite stampa');
 console.log('🎯 Power-ups cliccabili che portano ai progetti');
 console.log('📊 Barre statistiche visibili anche su mobile');
 console.log('🎬 Progetto Cinetattoo aggiunto con link Behance');
-console.log('🖼️ Pronto per sostituire emoji con illustrazione personalizzata');
+console.log('🏠 Header cliccabile per tornare alla home');
+console.log('🎨 Animazioni homepage con testo progressivo');
 console.log('⚡ Tempo di caricamento: 1 secondo');
