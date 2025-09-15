@@ -267,6 +267,78 @@ function initScrollAnimations() {
     console.log('📜 Animazioni scroll inizializzate');
 }
 
+// INIZIALIZZAZIONE EMAILJS - AGGIUNGI DOPO initScrollAnimations()
+function initEmailJS() {
+    // IMPORTANTE: Sostituisci con le tue chiavi EmailJS
+    emailjs.init("TUA_PUBLIC_KEY"); // <-- METTI LA TUA PUBLIC KEY
+    
+    const form = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const formStatus = document.getElementById('formStatus');
+    
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Disabilita il pulsante durante l'invio
+            submitBtn.disabled = true;
+            submitBtn.classList.add('sending');
+            submitBtn.innerHTML = '<span>INVIO IN CORSO...</span>';
+            
+            // Resetta lo status precedente
+            formStatus.className = 'form-status';
+            formStatus.textContent = '';
+            
+            // Parametri per EmailJS
+            const templateParams = {
+                user_name: form.user_name.value,
+                user_email: form.user_email.value,
+                subject: form.subject.value,
+                message: form.message.value,
+                to_name: 'Alice Martinazzoli'
+            };
+            
+            // IMPORTANTE: Sostituisci con i tuoi ID EmailJS
+            emailjs.send('TUO_SERVICE_ID', 'TUO_TEMPLATE_ID', templateParams)
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    
+                    // Mostra messaggio di successo
+                    formStatus.className = 'form-status success';
+                    formStatus.textContent = '✅ Messaggio inviato con successo! Ti risponderò al più presto.';
+                    
+                    // Resetta il form
+                    form.reset();
+                    
+                    // Ripristina il pulsante
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('sending');
+                    submitBtn.innerHTML = '<span>INVIA MESSAGGIO</span>';
+                    
+                    // Nascondi il messaggio dopo 5 secondi
+                    setTimeout(function() {
+                        formStatus.className = 'form-status';
+                        formStatus.textContent = '';
+                    }, 5000);
+                    
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    
+                    // Mostra messaggio di errore
+                    formStatus.className = 'form-status error';
+                    formStatus.textContent = '❌ Errore nell\'invio. Per favore riprova o contattami direttamente via email.';
+                    
+                    // Ripristina il pulsante
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('sending');
+                    submitBtn.innerHTML = '<span>INVIA MESSAGGIO</span>';
+                });
+        });
+    }
+    
+    console.log('📧 Form contatto con EmailJS inizializzato');
+}
+
 // DOWNLOAD CV PDF
 function initCVDownload() {
     const downloadBtn = document.getElementById('downloadCvBtn');
