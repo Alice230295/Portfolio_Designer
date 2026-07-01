@@ -897,7 +897,23 @@
             </div>
         </footer>
     </div>
-
+<div class="gallery-modal-overlay" id="galleryModal">
+    <div class="gallery-modal">
+        <button class="gallery-close" id="galleryClose" aria-label="Chiudi">✕</button>
+        <div class="gallery-tabs" id="galleryTabs"></div>
+        <div class="gallery-image-wrap">
+            <button class="gallery-arrow gallery-arrow-left" id="galleryPrev" aria-label="Precedente">‹</button>
+            <img class="gallery-image" id="galleryImage" src="" alt="">
+            <button class="gallery-arrow gallery-arrow-right" id="galleryNext" aria-label="Successiva">›</button>
+        </div>
+        <div class="gallery-dots" id="galleryDots"></div>
+        <div class="gallery-info">
+            <h3 id="galleryTitle"></h3>
+            <p id="galleryDescription"></p>
+            <div class="gallery-tags" id="galleryTags"></div>
+        </div>
+    </div>
+</div>
     <script src="script.js"></script>
 </body>
 </html>
