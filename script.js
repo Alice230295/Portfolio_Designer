@@ -1086,36 +1086,211 @@ function initAnimations() {
    }
 }
 
-// GESTIONE PROGETTI
+// COSTRUZIONE PERCORSI IMMAGINI
+function buildImages(folder, start, end, padded, cover) {
+    const arr = [];
+    if (cover) arr.push(`img/projects/${folder}/Copertina.webp`);
+    for (let i = start; i <= end; i++) {
+        const num = padded ? String(i).padStart(2, '0') : i;
+        arr.push(`img/projects/${folder}/${num}.webp`);
+    }
+    return arr;
+}
+
+// DATI PROGETTI
+const projectsGalleryData = {
+    boem: {
+        title: 'Restyling Lattina BOEM',
+        description: 'Finalista al concorso "Talenti Accesi" di Torcha nel 2025 con una proposta creativa per il restyling della lattina, tra branding e package design.',
+        tags: ['Brand Design', 'Package Design', 'Creative Strategy'],
+        images: buildImages('BOEM', 1, 6, true, false)
+    },
+    ginoZamprioli: {
+        title: '"Gino Zamprioli: Make-up Artist dal 1969"',
+        description: 'Progetto editoriale completo dedicato a una figura iconica del make-up, dalla ricerca alla realizzazione grafica del libro.',
+        tags: ['Editorial Design', 'Layout', 'Typography'],
+        images: buildImages('Design Book', 1, 4, true, true)
+    },
+    cinetattoo: {
+        title: 'Custom Fake Tattoos - Birra Moretti',
+        description: 'Tatuaggi finti personalizzati realizzati per lo spot pubblicitario Birra Moretti, tra design realistico e applicazione professionale.',
+        tags: ['Custom Design', 'Advertising', 'Tattoo Art'],
+        images: buildImages('Cinetattoo', 1, 6, true, true)
+    },
+    logoDesign: {
+        title: 'Logo Design - Planty of Food & Officina Spatti',
+        description: 'Redesign di due identità distinte: alimentazione plant-based per Planty of Food e calzature per Officina Spatti.',
+        tags: ['Logo Design', 'Brand Identity'],
+        images: buildImages('Logo design', 1, 19, true, true)
+    },
+    socialMedia: {
+        title: 'Social Media Design',
+        description: 'Creazione di contenuti grafici per social media e sviluppo di campagne visual coordinate per diversi brand.',
+        tags: ['Social Media', 'Content Design', 'Digital Marketing'],
+        images: buildImages('Graphic Design', 1, 15, true, false)
+    },
+    resolutionTech: {
+        title: 'Resolution Tech - Sito Web',
+        description: 'Redesign completo del sito e dell\'identità digitale di Resolution Tech, dal Figma al lancio online.',
+        tags: ['Web Design', 'Brand Identity', 'Figma'],
+        images: buildImages('Resolution Tech', 1, 20, false, false)
+    },
+    presentazioneResolutionTech: {
+        title: 'Resolution Tech - Presentazione',
+        description: 'Materiale di presentazione del progetto: brand guidelines, mockup e comunicazione al cliente.',
+        tags: ['Presentation', 'Brand Guidelines'],
+        images: buildImages('Presentazione Resolution Tech', 1, 41, false, false)
+    },
+    jojob: {
+        title: 'Jojob RT - Complete UX/UI Project',
+        description: 'Progetto UX/UI completo dalla Discovery all\'interfaccia finale: ricerca, accessibilità, wireframe, UI e test con gli utenti.',
+        tags: ['UX Research', 'Accessibility', 'Wireframing', 'UI Design'],
+        tabs: [
+            { label: 'Discovery', images: buildImages('Discovery', 1, 78, true, true) },
+            { label: 'Accessibilità', images: buildImages('Accessibilità', 1, 61, true, true) },
+            { label: 'Wireframe', images: buildImages('Wireframe', 1, 44, true, true) },
+            { label: 'User Interface', images: buildImages('User Interface', 1, 26, true, false) },
+            { label: 'User Test', images: [
+                ...buildImages('User Test parte 1', 1, 13, false, false),
+                ...buildImages('User Test parte 2', 1, 12, false, false)
+            ]}
+        ]
+    }
+};
+
+// STATO GALLERY
+let currentGalleryImages = [];
+let currentGalleryIndex = 0;
+
+// APERTURA MODAL
+function openGallery(key) {
+    const project = projectsGalleryData[key];
+    if (!project) return;
+
+    document.getElementById('galleryTitle').textContent = project.title;
+    document.getElementById('galleryDescription').textContent = project.description;
+
+    const tagsContainer = document.getElementById('galleryTags');
+    tagsContainer.innerHTML = project.tags.map(t => `<span class="tech-badge">${t}</span>`).join('');
+
+    const tabsContainer = document.getElementById('galleryTabs');
+    tabsContainer.innerHTML = '';
+
+    if (project.tabs) {
+        project.tabs.forEach((tab, index) => {
+            const btn = document.createElement('button');
+            btn.className = 'gallery-tab-btn' + (index === 0 ? ' active' : '');
+            btn.textContent = tab.label;
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.gallery-tab-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                loadGalleryImages(tab.images);
+            });
+            tabsContainer.appendChild(btn);
+        });
+        loadGalleryImages(project.tabs[0].images);
+    } else {
+        loadGalleryImages(project.images);
+    }
+
+    document.getElementById('galleryModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function loadGalleryImages(images) {
+    currentGalleryImages = images;
+    currentGalleryIndex = 0;
+    renderGalleryDots();
+    showGalleryImage(0);
+}
+
+function showGalleryImage(index) {
+    if (index < 0) index = currentGalleryImages.length - 1;
+    if (index >= currentGalleryImages.length) index = 0;
+    currentGalleryIndex = index;
+
+    const img = document.getElementById('galleryImage');
+    img.src = currentGalleryImages[index];
+
+    document.querySelectorAll('.gallery-dot').forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+    });
+}
+
+function renderGalleryDots() {
+    const dotsContainer = document.getElementById('galleryDots');
+    dotsContainer.innerHTML = '';
+
+    const maxDots = 12;
+    const total = currentGalleryImages.length;
+
+    if (total <= maxDots) {
+        currentGalleryImages.forEach((_, i) => {
+            const dot = document.createElement('button');
+            dot.className = 'gallery-dot' + (i === 0 ? ' active' : '');
+            dot.addEventListener('click', () => showGalleryImage(i));
+            dotsContainer.appendChild(dot);
+        });
+    } else {
+        const counter = document.createElement('span');
+        counter.style.color = 'var(--text-muted)';
+        counter.style.fontSize = '12px';
+        counter.id = 'galleryCounter';
+        counter.textContent = `1 / ${total}`;
+        dotsContainer.appendChild(counter);
+    }
+}
+
+function updateGalleryCounter() {
+    const counter = document.getElementById('galleryCounter');
+    if (counter) {
+        counter.textContent = `${currentGalleryIndex + 1} / ${currentGalleryImages.length}`;
+    }
+}
+
+function closeGallery() {
+    document.getElementById('galleryModal').classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// INIZIALIZZAZIONE GALLERY MODAL
+function initGalleryModal() {
+    document.getElementById('galleryClose').addEventListener('click', closeGallery);
+    document.getElementById('galleryModal').addEventListener('click', function(e) {
+        if (e.target === this) closeGallery();
+    });
+    document.getElementById('galleryPrev').addEventListener('click', function() {
+        showGalleryImage(currentGalleryIndex - 1);
+        updateGalleryCounter();
+    });
+    document.getElementById('galleryNext').addEventListener('click', function() {
+        showGalleryImage(currentGalleryIndex + 1);
+        updateGalleryCounter();
+    });
+    document.addEventListener('keydown', function(e) {
+        if (!document.getElementById('galleryModal').classList.contains('active')) return;
+        if (e.key === 'Escape') closeGallery();
+        if (e.key === 'ArrowLeft') { showGalleryImage(currentGalleryIndex - 1); updateGalleryCounter(); }
+        if (e.key === 'ArrowRight') { showGalleryImage(currentGalleryIndex + 1); updateGalleryCounter(); }
+    });
+    console.log('🖼️ Gallery modal inizializzata');
+}
+
+// GESTIONE PROGETTI - SOSTITUISCE LA VECCHIA initProjectHandlers
 function initProjectHandlers() {
-   document.addEventListener('click', function(e) {
-       if (e.target.classList.contains('mission-btn')) {
-           const card = e.target.closest('.mission-card');
-           const title = card.querySelector('.mission-title').textContent;
-           
-           const projectLinks = {
-               'Restyling Lattina BOEM': 'https://www.behance.net/gallery/233194551/Rebranding-BOEM-can',
-               '"Gino Zamprioli: Make-up Artist dal 1969"': 'https://www.behance.net/gallery/107566109/Gino-Zamprioli-book',
-               'Jojob RT - Complete UX/UI Project': createJojobModal,
-               'Custom Fake Tattoos - Birra Moretti': 'https://www.behance.net/gallery/169297515/Custom-fake-tattoos-for-adv-Birra-Moretti',
-               'Planty of Food': 'https://www.behance.net/gallery/232995341/Logo-Design-Planty-of-Food',
-               'Officina Spatti': 'https://www.behance.net/gallery/94515697/Officina-Spatti-Calzature',
-               'Progetti Cinematografici Internazionali': 'https://www.imdb.com/it/name/nm14138071/',
-               'Social Media Design': 'https://www.behance.net/alicemarti563e',
-               'Master UX/UI Design': 'https://www.behance.net/alicemarti563e'
-           };
-           
-           const link = projectLinks[title];
-           
-           if (typeof link === 'function') {
-               link();
-           } else if (link) {
-               window.open(link, '_blank');
-           } else {
-               window.open('https://www.behance.net/alicemarti563e', '_blank');
-           }
-       }
-   });
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('mission-btn')) {
+            const card = e.target.closest('.mission-card');
+            const projectKey = card.getAttribute('data-project');
+            const externalUrl = card.getAttribute('data-external');
+
+            if (projectKey) {
+                openGallery(projectKey);
+            } else if (externalUrl) {
+                window.open(externalUrl, '_blank');
+            }
+        }
+    });
 }
 
 // NOTIFICA MOBILE
