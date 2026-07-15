@@ -1381,6 +1381,10 @@ body::before {
     animation: fadeIn 0.3s ease;
 }
 
+video.gallery-image {
+    background: #000;
+}
+
 .gallery-arrow {
     position: absolute;
     top: 50%;
