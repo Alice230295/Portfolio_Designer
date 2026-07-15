@@ -465,7 +465,7 @@ const projectsGalleryData = {
         title: 'Social Media Design',
         description: 'Creazione di contenuti grafici per social media e sviluppo di campagne visual coordinate per diversi brand.',
         tags: ['Social Media', 'Content Design', 'Digital Marketing'],
-        images: buildImages('Graphic Design', 1, 15, true, false)
+        images: buildImages('Graphic design', 1, 15, true, false)
     },
     resolutionTech: {
         title: 'Resolution Tech - Sito Web',
