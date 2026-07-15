@@ -417,12 +417,13 @@ function initAnimations() {
 }
 
 /* ===== GALLERY PROGETTI ===== */
-function buildImages(folder, start, end, padded, cover) {
+function buildImages(folder, start, end, padded, cover, ext) {
+    ext = ext || 'webp';
     const arr = [];
-    if (cover) arr.push(`img/projects/${folder}/Copertina.webp`);
+    if (cover) arr.push(`img/projects/${folder}/Copertina.${ext}`);
     for (let i = start; i <= end; i++) {
         const num = padded ? String(i).padStart(2, '0') : i;
-        arr.push(`img/projects/${folder}/${num}.webp`);
+        arr.push(`img/projects/${folder}/${num}.${ext}`);
     }
     return arr;
 }
@@ -438,18 +439,26 @@ const projectsGalleryData = {
         title: '"Gino Zamprioli: Make-up Artist dal 1969"',
         description: 'Progetto editoriale completo dedicato a una figura iconica del make-up, dalla ricerca alla realizzazione grafica del libro.',
         tags: ['Editorial Design', 'Layout', 'Typography'],
-        images: buildImages('Design Book', 1, 4, true, true)
+        images: buildImages('Design Book', 1, 5, true, false)
     },
     cinetattoo: {
         title: 'Custom Fake Tattoos - Birra Moretti',
         description: 'Tatuaggi finti personalizzati realizzati per lo spot pubblicitario Birra Moretti, tra design realistico e applicazione professionale.',
         tags: ['Custom Design', 'Advertising', 'Tattoo Art'],
-        images: buildImages('Cinetattoo', 1, 6, true, true)
+        images: [
+            'img/projects/Cinetattoo/Copertina.webp',
+            'img/projects/Cinetattoo/01.webp',
+            'img/projects/Cinetattoo/02.webp',
+            'img/projects/Cinetattoo/03.webp',
+            'img/projects/Cinetattoo/04.webp',
+            'img/projects/Cinetattoo/05.webp',
+            'img/projects/Cinetattoo/06.png'
+        ]
     },
     logoDesign: {
-        title: 'Logo Design - Planty of Food & Officina Spatti',
-        description: 'Redesign di due identità distinte: alimentazione plant-based per Planty of Food e calzature per Officina Spatti.',
-        tags: ['Logo Design', 'Brand Identity'],
+        title: 'Logo Design - Planty of Food',
+        description: "Redesign del logo Planty of Food per promuovere un'alimentazione plant-based sostenibile e accessibile.",
+        tags: ['Logo Design', 'Brand Identity', 'Sustainability'],
         images: buildImages('Logo design', 1, 19, true, true)
     },
     socialMedia: {
@@ -462,13 +471,20 @@ const projectsGalleryData = {
         title: 'Resolution Tech - Sito Web',
         description: "Redesign completo del sito e dell'identità digitale di Resolution Tech, dal Figma al lancio online.",
         tags: ['Web Design', 'Brand Identity', 'Figma'],
-        images: buildImages('Resolution Tech', 1, 20, false, false)
+        images: buildImages('Resolution Tech', 1, 20, false, false, 'jpg')
     },
     presentazioneResolutionTech: {
         title: 'Resolution Tech - Presentazione',
         description: 'Materiale di presentazione del progetto: brand guidelines, mockup e comunicazione al cliente.',
         tags: ['Presentation', 'Brand Guidelines'],
-        images: buildImages('Presentazione Resolution Tech', 1, 41, false, false)
+        images: buildImages('Presentazione Resolution Tech', 1, 42, false, false, 'jpg')
+    },
+    videoEditing: {
+        title: 'Video Editing',
+        description: 'Selezione di montaggi video tra contenuti social e produzioni più curate, tra ritmo, storytelling e montaggio dinamico.',
+        tags: ['Video Editing', 'CapCut', 'Storytelling'],
+        type: 'video',
+        images: buildImages('Video editing', 1, 5, true, false, 'mp4')
     },
     jojob: {
         title: 'Jojob RT - Complete UX/UI Project',
@@ -480,8 +496,8 @@ const projectsGalleryData = {
             { label: 'Wireframe', images: buildImages('Wireframe', 1, 44, true, true) },
             { label: 'User Interface', images: buildImages('User Interface', 1, 26, true, false) },
             { label: 'User Test', images: [
-                ...buildImages('User Test parte 1', 1, 13, false, false),
-                ...buildImages('User Test parte 2', 1, 12, false, false)
+                ...buildImages('User Test parte 1', 1, 13, false, false, 'jpg'),
+                ...buildImages('User Test parte 2', 1, 12, false, false, 'jpg')
             ]}
         ]
     }
@@ -489,10 +505,13 @@ const projectsGalleryData = {
 
 let currentGalleryImages = [];
 let currentGalleryIndex = 0;
+let currentGalleryType = 'image';
 
 function openGallery(key) {
     const project = projectsGalleryData[key];
     if (!project) return;
+
+    currentGalleryType = project.type === 'video' ? 'video' : 'image';
 
     document.getElementById('galleryTitle').textContent = project.title;
     document.getElementById('galleryDescription').textContent = project.description;
@@ -537,7 +556,20 @@ function showGalleryImage(index) {
     currentGalleryIndex = index;
 
     const img = document.getElementById('galleryImage');
-    img.src = currentGalleryImages[index];
+    const video = document.getElementById('galleryVideo');
+
+    if (currentGalleryType === 'video') {
+        video.pause();
+        video.src = currentGalleryImages[index];
+        video.style.display = 'block';
+        img.style.display = 'none';
+    } else {
+        video.pause();
+        video.removeAttribute('src');
+        video.style.display = 'none';
+        img.style.display = 'block';
+        img.src = currentGalleryImages[index];
+    }
 
     document.querySelectorAll('.gallery-dot').forEach((dot, i) => {
         dot.classList.toggle('active', i === index);
@@ -574,6 +606,8 @@ function updateGalleryCounter() {
 }
 
 function closeGallery() {
+    const video = document.getElementById('galleryVideo');
+    if (video) video.pause();
     document.getElementById('galleryModal').classList.remove('active');
     document.body.style.overflow = '';
 }
