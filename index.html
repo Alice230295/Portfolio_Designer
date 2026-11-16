@@ -22,7 +22,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
     <a class="skip-link" href="#contenuto">Vai al contenuto</a>
@@ -270,10 +270,6 @@
 
                     <div class="section-head">
                         <h2 class="section-title">Esperienza</h2>
-                        <div class="cv-download">
-                            <button class="btn btn-primary" id="cvBtn" type="button">Scarica il CV in PDF</button>
-                            <p class="hint">Si apre la finestra di stampa: scegli "Salva come PDF".</p>
-                        </div>
                     </div>
 
                     <div class="cv-grid">
@@ -281,10 +277,10 @@
                             <h3 class="cv-col-title">Lavoro</h3>
                             <ol class="timeline">
                                 <!-- Per aggiungere una posizione copia un blocco <li>...</li> e cambia i testi -->
-                                <li>
-                                    <p class="when">Da dicembre 2026</p>
+                                <li class="now">
+                                    <p class="when">Dicembre 2026 – oggi</p>
                                     <h4>Video e contenuti social</h4>
-                                    <p class="where">Collaborazione con una designer</p>
+                                    <p class="where">Collaborazione con ZALEWeb</p>
                                     <p>Riprese, editing video e creazione di caroselli, con attrezzatura propria.</p>
                                 </li>
                                 <li class="now">
@@ -372,6 +368,12 @@
                                 <li>Finalista "Talenti Accesi" di Torcha, 2025</li>
                                 <li>Autrice del libro su Gino Zamprioli, make up artist</li>
                             </ul>
+
+                            <!-- Il CV è il file CV_Alice_Martinazzoli.pdf nella cartella principale del sito:
+                                 per aggiornarlo basta sostituire il file mantenendo lo stesso nome -->
+                            <div class="cv-download">
+                                <a class="btn btn-primary" href="CV_Alice_Martinazzoli.pdf" download="CV_Alice_Martinazzoli.pdf">Scarica il CV in PDF</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -405,8 +407,7 @@
                             <label for="cfMessage">Messaggio</label>
                             <textarea id="cfMessage" name="message" rows="5" required></textarea>
                         </div>
-                        <button class="btn btn-accent" type="submit">Apri l'email con il messaggio</button>
-                        <p class="hint">Il messaggio si apre già compilato nella tua app di posta: controlla e invia.</p>
+                        <button class="btn btn-accent" type="submit">Invia messaggio</button>
                     </form>
                 </div>
             </section>
@@ -437,6 +438,6 @@
         <p class="lb-counter" id="lbCounter" aria-live="polite"></p>
     </dialog>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=3"></script>
 </body>
 </html>

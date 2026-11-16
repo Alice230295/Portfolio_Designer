@@ -518,10 +518,6 @@ navToggle.addEventListener('click', function () {
 siteNav.addEventListener('click', function (e) { if (e.target.tagName === 'A') closeNav(); });
 document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeNav(); });
 
-/* ---------- CV in PDF: stampa la sezione Esperienza, sempre aggiornata ---------- */
-
-document.getElementById('cvBtn').addEventListener('click', function () { window.print(); });
-
 /* ---------- Modulo contatti: apre l'email già compilata ---------- */
 
 document.getElementById('contactForm').addEventListener('submit', function (e) {

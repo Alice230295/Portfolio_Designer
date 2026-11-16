@@ -108,7 +108,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
     border-bottom: 1px solid var(--line);
 }
 .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 4rem; }
-.brand { font-family: var(--display); font-size: 1.6rem; letter-spacing: 0.02em; text-decoration: none; line-height: 1; padding: 0.5rem 0; }
+.brand { font-family: var(--hand); font-weight: 600; font-size: 2.1rem; text-decoration: none; line-height: 1; padding: 0.35rem 0; }
 .brand:hover { color: var(--orange); }
 .site-nav { display: flex; align-items: center; gap: clamp(0.75rem, 2vw, 1.75rem); }
 .site-nav a { text-decoration: none; font-weight: 500; font-size: 0.975rem; padding: 0.5rem 0.1rem; border-bottom: 2px solid transparent; }
@@ -288,7 +288,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 
 /* ---------- Esperienza ---------- */
 
-.cv-download { text-align: right; }
+.cv-download { margin-top: 2rem; }
 .cv-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 5rem); }
 .cv-col-title { font-family: var(--display); font-weight: 400; font-size: 2.25rem; line-height: 1; margin-bottom: 1.25rem; }
 .cv-grid > div > .cv-col-title:not(:first-child) { margin-top: 2.5rem; }
@@ -422,7 +422,6 @@ button { font: inherit; color: inherit; cursor: pointer; }
     .msd-grid, .cv-grid, .contact-grid, .project-intro { grid-template-columns: 1fr; align-items: start; }
     .msd-stats { max-width: 26rem; }
     .gallery { grid-template-columns: repeat(2, 1fr); }
-    .cv-download { text-align: left; }
     .reels { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .reels-side { grid-column: 1 / -1; padding: 1.5rem 0 0; }
 }
