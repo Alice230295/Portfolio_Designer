@@ -4,618 +4,438 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description" content="Alice Martinazzoli - Graphic Designer con 8 anni di esperienza e UX/UI Designer. Portfolio di progetti creativi, brand identity e design digitale.">
-    <meta name="keywords" content="Alice Martinazzoli, Graphic Designer, UX/UI Designer, Portfolio, Brand Identity, Web Design, Brescia, Italia">
+    <title>Alice Martinazzoli | Digital designer</title>
+    <meta name="description" content="Alice Martinazzoli, digital designer. Identità visive, interfacce UX/UI e contenuti video per brand, aziende e produzioni. Autrice della pagina My Secret Design.">
     <meta name="author" content="Alice Martinazzoli">
-    <meta name="robots" content="index, follow">
-    <meta name="language" content="Italian">
 
-    <meta property="og:title" content="Alice Martinazzoli - Graphic & UX/UI Designer Portfolio">
-    <meta property="og:description" content="Esplora il portfolio creativo di Alice Martinazzoli. Graphic Designer con 8 anni di esperienza, finalista Talenti Accesi 2025.">
-    <meta property="og:image" content="https://alice230295.github.io/Portfolio_Designer/img/og-image.jpg">
+    <meta property="og:title" content="Alice Martinazzoli | Digital designer">
+    <meta property="og:description" content="Identità visive, interfacce UX/UI e contenuti video. Guarda i progetti e la pagina My Secret Design.">
+    <meta property="og:image" content="https://alice230295.github.io/Portfolio_Designer/img/alice_martinazzoli.jpg">
     <meta property="og:url" content="https://alice230295.github.io/Portfolio_Designer/">
     <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Alice Martinazzoli Portfolio">
     <meta property="og:locale" content="it_IT">
+    <meta name="twitter:card" content="summary">
 
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Alice Martinazzoli - Graphic & UX/UI Designer">
-    <meta name="twitter:description" content="Portfolio creativo di Alice Martinazzoli. Progetti di graphic design, UX/UI e brand identity.">
-    <meta name="twitter:image" content="https://alice230295.github.io/Portfolio_Designer/img/og-image.jpg">
+    <!-- Icona della scheda: disegnata qui, non serve nessun file -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23E8562A'/%3E%3Ctext x='32' y='44' font-family='Arial,sans-serif' font-size='30' font-weight='700' text-anchor='middle' fill='%23F5F1EA'%3EAM%3C/text%3E%3C/svg%3E">
 
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-
-    <title>Alice Martinazzoli - Graphic & UX/UI Designer Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 <body>
-    <div class="loading-screen" id="loadingScreen">
-        <div class="rocket-container">
-            <div class="rocket">🚀</div>
+    <a class="skip-link" href="#contenuto">Vai al contenuto</a>
+
+    <header class="site-header">
+        <div class="wrap header-inner">
+            <a class="brand" href="#top">Alice Martinazzoli</a>
+            <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav">Menu</button>
+            <nav class="site-nav" id="siteNav" aria-label="Sezioni del sito">
+                <a href="#progetti">Progetti</a>
+                <a href="#my-secret-design">My Secret Design</a>
+                <a href="#chi-sono">Chi sono</a>
+                <a href="#esperienza">Esperienza</a>
+                <a class="nav-cta" href="#contatti">Contattami</a>
+            </nav>
         </div>
-        <div class="loading-text">Caricamento Portfolio...</div>
-        <div class="loading-bar">
-            <div class="loading-progress"></div>
-        </div>
-    </div>
+    </header>
 
-    <div class="menu-overlay" id="menuOverlay"></div>
+    <main id="contenuto">
 
-    <div class="game-screen">
-        <header class="game-header">
-            <div class="game-title" id="headerTitle">ALICE MARTINAZZOLI</div>
-            <button class="hamburger-btn" id="hamburgerBtn">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </header>
+        <!-- ================= PAGINA PRINCIPALE ================= -->
+        <div id="homeView">
 
-        <nav class="game-menu" id="gameMenu">
-            <div class="menu-content">
-                <button class="menu-btn active" data-section="home">HOME</button>
-                <button class="menu-btn" data-section="about">ABOUT</button>
-                <button class="menu-btn" data-section="projects">PROGETTI</button>
-                <button class="menu-btn" data-section="skills">SKILLS</button>
-                <button class="menu-btn" data-section="cv">CV</button>
-                <button class="menu-btn" data-section="contact">CONTATTI</button>
-            </div>
-        </nav>
-
-        <main class="game-world">
-
-            <section id="home" class="game-section active">
-                <div class="hero-game">
-                    <div class="player-character">
-                        <div class="character-sprite">
-                            <img src="img/alice_illustration.png" alt="Alice Martinazzoli illustrazione" class="character-illustration">
-                        </div>
-                    </div>
-
-                    <div class="intro-text animated-text">
-                        <h1 class="welcome-title">
-                            <span class="line1">CIAO! SONO ALICE MARTINAZZOLI</span>
-                            <span class="line2">Graphic Designer con 8 anni di esperienza e Junior UX/UI Designer</span>
-                            <span class="line3">BENVENUTO/A NEL MIO MONDO!</span>
-                        </h1>
-                        <p class="game-description">
-                            Esplora il mio universo del design dove creatività, strategia e user experience si incontrano.
-                            Dal graphic design tradizionale all'UX/UI del futuro, ogni progetto è una nuova avventura!
+            <section class="hero" id="top">
+                <div class="wrap hero-grid">
+                    <div class="hero-text">
+                        <p class="hand hero-hello">Ciao, sono Alice!</p>
+                        <h1 class="hero-title">Digital<br>designer</h1>
+                        <p class="hero-lead">
+                            Disegno marchi, interfacce e video per brand, aziende e produzioni tv e cinema.
+                            E ogni settimana racconto il design su My Secret Design.
                         </p>
+                        <div class="hero-actions">
+                            <a class="btn btn-accent" href="#progetti">Guarda i progetti</a>
+                            <a class="btn btn-ghost-light" href="#contatti">Scrivimi</a>
+                        </div>
                     </div>
 
-                    <div class="power-ups">
-                        <div class="power-up clickable" data-target="projects">
-                            <span class="power-icon">🎨</span>
-                            <span class="power-name">GRAPHIC DESIGN</span>
-                            <span class="power-subtitle">Clicca per vedere i progetti</span>
+                    <div class="hero-figure">
+                        <div class="hero-frame">
+                            <!-- Se il file .webp non c'è, il sito usa da solo il .png originale -->
+                            <img src="img/alice_illustration.webp"
+                                 onerror="this.onerror=null;this.src='img/alice_illustration.png'"
+                                 alt="Illustrazione di Alice Martinazzoli che scatta una foto" width="900" height="1350">
                         </div>
-                        <div class="power-up clickable" data-target="projects">
-                            <span class="power-icon">💻</span>
-                            <span class="power-name">UX/UI DESIGN</span>
-                            <span class="power-subtitle">Clicca per vedere i progetti</span>
-                        </div>
-                        <div class="power-up clickable" data-target="projects">
-                            <span class="power-icon">🏆</span>
-                            <span class="power-name">AWARD WINNER</span>
-                            <span class="power-subtitle">Clicca per vedere i progetti</span>
-                        </div>
+                        <!-- Bollino che gira -->
+                        <svg class="hero-badge" viewBox="0 0 140 140" aria-hidden="true">
+                            <circle cx="70" cy="70" r="70" fill="#E8562A"/>
+                            <defs><path id="badgePath" d="M70,70 m-52,0 a52,52 0 1,1 104,0 a52,52 0 1,1 -104,0"/></defs>
+                            <text class="hero-badge-text"><textPath href="#badgePath" startOffset="0">FINALISTA TALENTI ACCESI 2025 ✦ TORCHA ✦</textPath></text>
+                            <path d="M70 46 l6.5 17.5 L94 70 l-17.5 6.5 L70 94 l-6.5-17.5 L46 70 l17.5-6.5z" fill="#111"/>
+                        </svg>
                     </div>
                 </div>
             </section>
 
-            <section id="about" class="game-section">
-                <h2 class="section-title">Chi Sono</h2>
-                <div class="character-stats">
-                    <div class="about-hero">
-                        <div class="profile-image-container">
-                            <div class="profile-image">
-                                <img src="img/alice_martinazzoli.jpg" alt="Alice Martinazzoli" class="profile-photo">
-                                <div class="photo-frame"></div>
-                            </div>
-                            <div class="profile-status">
-                                <div class="status-badge">Creative Designer</div>
-                            </div>
-                        </div>
+            <!-- Striscia che scorre con quello che faccio -->
+            <div class="marquee" aria-hidden="true">
+                <div class="marquee-track">
+                    <span>Brand identity</span><span>UX/UI design</span><span>Video editing</span><span>Reel e caroselli</span><span>Editoria</span><span>Packaging</span><span>Grafica di scena</span>
+                    <span>Brand identity</span><span>UX/UI design</span><span>Video editing</span><span>Reel e caroselli</span><span>Editoria</span><span>Packaging</span><span>Grafica di scena</span>
+                </div>
+            </div>
 
-                        <div class="about-intro">
-                            <h3 class="intro-title">Alice Martinazzoli</h3>
-                            <p class="intro-subtitle">Graphic Designer & UX/UI Designer</p>
-                            <p class="intro-description">
-                                Creo esperienze visive che raccontano storie e connettono le persone.
-                                La mia passione per il design nasce dall'unione tra creatività, strategia
-                                e tecnologia, sempre con l'obiettivo di trasformare idee in soluzioni
-                                visive impattanti e funzionali.
+            <section class="section" id="progetti">
+                <div class="wrap">
+                    <div class="section-head">
+                        <div class="title-note">
+                            <h2 class="section-title">Progetti</h2>
+                            <p class="hand note-rot">scegli e clicca</p>
+                        </div>
+                        <div class="filters" id="filters" role="group" aria-label="Filtra i progetti per tipo"></div>
+                    </div>
+                    <!-- Le schede dei progetti vengono create da script.js (elenco PROJECTS) -->
+                    <div class="project-grid" id="projectGrid"></div>
+                    <noscript><p>Per vedere i progetti attiva JavaScript, oppure visita il mio <a href="https://www.behance.net/alicemarti563e">profilo Behance</a>.</p></noscript>
+                </div>
+            </section>
+
+            <section class="msd" id="my-secret-design">
+                <div class="wrap">
+                    <div class="msd-grid">
+                        <div class="msd-main">
+                            <p class="hand msd-kicker">la mia pagina Instagram</p>
+                            <h2 class="msd-title">My Secret Design</h2>
+                            <p class="msd-lead">
+                                Racconto il design a chi lo fa di mestiere: tool, libri e storia della grafica italiana,
+                                in reel e caroselli che ideo, scrivo e monto io.
                             </p>
+                            <p>
+                                È nata per mettermi in gioco e sperimentare nuove tecniche di comunicazione:
+                                video, montaggio, ideazione e ricerca.
+                            </p>
+                            <div class="msd-actions">
+                                <a class="btn btn-dark" href="https://www.instagram.com/my.secret.design/" target="_blank" rel="noopener">Segui @my.secret.design</a>
+                                <a class="btn btn-outline-dark" href="https://www.tiktok.com/@mysecretdesign" target="_blank" rel="noopener">Guardala su TikTok</a>
+                            </div>
+                            <p class="msd-collab">Per collaborazioni: <a href="mailto:mysecretdesign25@gmail.com">mysecretdesign25@gmail.com</a></p>
                         </div>
+
+                        <!-- NUMERI DELLA PAGINA: aggiornali qui quando cambiano -->
+                        <dl class="msd-stats">
+                            <div>
+                                <dt>4.700+</dt>
+                                <dd>follower su Instagram</dd>
+                            </div>
+                            <div>
+                                <dt>125 mila+</dt>
+                                <dd>visualizzazioni al mese</dd>
+                            </div>
+                            <div>
+                                <dt>116 mila</dt>
+                                <dd>visualizzazioni per il reel più visto</dd>
+                            </div>
+                        </dl>
                     </div>
 
-                    <div class="stats-grid">
-                        <h3 class="stats-title">Le Mie Competenze</h3>
-                        <div class="stat-bar">
-                            <span class="stat-label">GRAPHIC DESIGN</span>
-                            <div class="stat-progress"><div class="stat-fill" data-width="95%"></div></div>
-                            <span class="stat-percentage">95%</span>
-                        </div>
-                        <div class="stat-bar">
-                            <span class="stat-label">UX/UI DESIGN</span>
-                            <div class="stat-progress"><div class="stat-fill" data-width="85%"></div></div>
-                            <span class="stat-percentage">85%</span>
-                        </div>
-                        <div class="stat-bar">
-                            <span class="stat-label">BRAND IDENTITY</span>
-                            <div class="stat-progress"><div class="stat-fill" data-width="90%"></div></div>
-                            <span class="stat-percentage">90%</span>
-                        </div>
-                        <div class="stat-bar">
-                            <span class="stat-label">CREATIVITÀ</span>
-                            <div class="stat-progress"><div class="stat-fill" data-width="98%"></div></div>
-                            <span class="stat-percentage">98%</span>
-                        </div>
+                    <div class="reels-head">
+                        <h3 class="reels-title">I reel più visti</h3>
+                        <p class="hand note-rot">clicca per guardarli</p>
                     </div>
 
-                    <div class="character-story">
-                        <h3 class="story-title">La Mia Storia</h3>
-                        <div class="story-content">
-                            <p>Sono una digital designer e video editor con esperienza in branding, comunicazione visiva e progetti digitali.</p>
-                            <p>Finalista nel 2025 al concorso “Talenti Accesi” di Torcha con un progetto di restyling selezionato per originalità e impatto visivo.</p>
-                            <p>Dopo la formazione in grafica presso International School of Comics e il master in UX/UI presso Start2Impact University, ho sviluppato un approccio al design orientato alla coerenza del brand e all’esperienza dell’utente.</p>
-                            <p>Parallelamente gestisco la pagina social My Secret Design, dove mi occupo della creazione e del montaggio di contenuti video dedicati al design e alla comunicazione visiva, sperimentando formati e linguaggi per i canali digitali.</p>
-                            <p>Ho maturato esperienza anche in ambito cinematografico, collaborando a produzioni internazionali e contribuendo alla definizione dell’immaginario visivo dei progetti.</p>
-                            <p>Progetto identità visive, interfacce digitali e contenuti multimediali che uniscono estetica, strategia e chiarezza comunicativa.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+                    <!-- =========================================================
+                         I TRE REEL
+                         Per ognuno puoi cambiare:
+                         1. il link:  href="..."  (incolla il link del reel)
+                         2. i testi:  argomento, titolo e visualizzazioni
+                         ========================================================= -->
+                    <div class="reels">
 
-            <section id="projects" class="game-section">
-                <h2 class="section-title">MISSIONI COMPLETATE</h2>
-                <div class="missions-grid">
+                        <a class="reel reel-cream" href="https://www.instagram.com/reels/Dd3cv3AtCXU/" target="_blank" rel="noopener">
+                            <span class="reel-topic">Libri</span>
+                            <span class="reel-name">I libri di design che non dimentichi</span>
+                            <span class="reel-views">116 mila visualizzazioni</span>
+                            <span class="reel-play" aria-hidden="true">▶</span>
+                            <span class="visually-hidden">Guarda il reel su Instagram, si apre in una nuova scheda</span>
+                        </a>
 
-                    <div class="mission-card completed legendary" data-project="boem">
-                        <div class="mission-header">
-                            <span class="mission-status">🏆 FINALISTA</span>
-                            <span class="mission-reward">+1000 XP</span>
-                        </div>
-                        <h3 class="mission-title">Restyling Lattina BOEM</h3>
-                        <p class="mission-description">Finalista al concorso "Talenti Accesi" di Torcha nel 2025 con una proposta creativa per il restyling della lattina, tra branding e package design.</p>
-                        <div class="mission-tech">
-                            <span class="tech-badge">Brand Design</span>
-                            <span class="tech-badge">Package Design</span>
-                            <span class="tech-badge">Creative Strategy</span>
-                        </div>
-                        <button class="mission-btn">VISUALIZZA DETTAGLI</button>
-                    </div>
+                        <a class="reel reel-navy" href="https://www.instagram.com/reel/DbijFvZtXcc/" target="_blank" rel="noopener">
+                            <span class="reel-topic">Tool</span>
+                            <span class="reel-name">5 strumenti per chi fa design</span>
+                            <span class="reel-views">41 mila visualizzazioni</span>
+                            <span class="reel-play" aria-hidden="true">▶</span>
+                            <span class="visually-hidden">Guarda il reel su Instagram, si apre in una nuova scheda</span>
+                        </a>
 
-                    <div class="mission-card completed epic" data-project="ginoZamprioli">
-                        <div class="mission-header">
-                            <span class="mission-status">📚 PUBBLICATO</span>
-                            <span class="mission-reward">+800 XP</span>
-                        </div>
-                        <h3 class="mission-title">"Gino Zamprioli: Make-up Artist dal 1969"</h3>
-                        <p class="mission-description">Progetto editoriale completo dedicato a una figura iconica del make-up, dalla ricerca alla realizzazione grafica del libro.</p>
-                        <div class="mission-tech">
-                            <span class="tech-badge">Editorial Design</span>
-                            <span class="tech-badge">Layout</span>
-                            <span class="tech-badge">Typography</span>
-                        </div>
-                        <button class="mission-btn">VISUALIZZA DETTAGLI</button>
-                    </div>
+                        <a class="reel reel-pink" href="https://www.instagram.com/reel/DcRDwMMNlt2/" target="_blank" rel="noopener">
+                            <span class="reel-topic">Storia, episodio 1</span>
+                            <span class="reel-name">Come nasce la grafica italiana</span>
+                            <span class="reel-views">34 mila visualizzazioni</span>
+                            <span class="reel-play" aria-hidden="true">▶</span>
+                            <span class="visually-hidden">Guarda il reel su Instagram, si apre in una nuova scheda</span>
+                        </a>
 
-                    <div class="mission-card completed epic" data-project="jojob">
-                        <div class="mission-header">
-                            <span class="mission-status">🎯 UX/UI</span>
-                            <span class="mission-reward">+900 XP</span>
-                        </div>
-                        <h3 class="mission-title">Jojob RT - Complete UX/UI Project</h3>
-                        <p class="mission-description">Progetto UX/UI completo dalla Discovery all'interfaccia finale: ricerca, accessibilità, wireframe, UI e test con gli utenti.</p>
-                        <div class="mission-tech">
-                            <span class="tech-badge">UX Research</span>
-                            <span class="tech-badge">Accessibility</span>
-                            <span class="tech-badge">Wireframing</span>
-                            <span class="tech-badge">UI Design</span>
-                        </div>
-                        <button class="mission-btn">VISUALIZZA DETTAGLI</button>
-                    </div>
-
-                    <div class="mission-card completed rare" data-project="cinetattoo">
-                        <div class="mission-header">
-                            <span class="mission-status">🎬 CINETATTOO</span>
-                            <span class="mission-reward">+700 XP</span>
-                        </div>
-                        <h3 class="mission-title">Custom Fake Tattoos - Birra Moretti</h3>
-                        <p class="mission-description">Tatuaggi finti personalizzati realizzati per lo spot pubblicitario Birra Moretti, tra design realistico e applicazione professionale.</p>
-                        <div class="mission-tech">
-                            <span class="tech-badge">Custom Design</span>
-                            <span class="tech-badge">Advertising</span>
-                            <span class="tech-badge">Tattoo Art</span>
-                        </div>
-                        <button class="mission-btn">VISUALIZZA DETTAGLI</button>
-                    </div>
-
-                    <div class="mission-card completed rare" data-project="logoDesign">
-                        <div class="mission-header">
-                            <span class="mission-status">🌱 LOGO</span>
-                            <span class="mission-reward">+600 XP</span>
-                        </div>
-                        <h3 class="mission-title">Logo Design - Planty of Food</h3>
-                        <p class="mission-description">Redesign del logo Planty of Food per promuovere un'alimentazione plant-based sostenibile e accessibile.</p>
-                        <div class="mission-tech">
-                            <span class="tech-badge">Logo Design</span>
-                            <span class="tech-badge">Brand Identity</span>
-                            <span class="tech-badge">Sustainability</span>
-                        </div>
-                        <button class="mission-btn">VISUALIZZA DETTAGLI</button>
-                    </div>
-
-                    <div class="mission-card completed epic" data-project="videoEditing">
-                        <div class="mission-header">
-                            <span class="mission-status">🎬 VIDEO</span>
-                            <span class="mission-reward">+900 XP</span>
-                        </div>
-                        <h3 class="mission-title">Video Editing</h3>
-                        <p class="mission-description">Selezione di montaggi video tra contenuti social e produzioni più curate, tra ritmo, storytelling e montaggio dinamico.</p>
-                        <div class="mission-tech">
-                            <span class="tech-badge">Video Editing</span>
-                            <span class="tech-badge">CapCut</span>
-                            <span class="tech-badge">Storytelling</span>
-                        </div>
-                        <button class="mission-btn">VISUALIZZA DETTAGLI</button>
-                    </div>
-
-                    <div class="mission-card completed epic" data-external="https://www.tiktok.com/@mysecretdesign">
-                        <div class="mission-header">
-                            <span class="mission-status">🎥 TIKTOK</span>
-                            <span class="mission-reward">+500 XP</span>
-                        </div>
-                        <h3 class="mission-title">My Secret Design</h3>
-                        <p class="mission-description">La mia pagina TikTok personale dedicata al design: dall'ideazione alla creazione di contenuti social, dietro le quinte del mio lavoro creativo.</p>
-                        <div class="mission-tech">
-                            <span class="tech-badge">Content Creation</span>
-                            <span class="tech-badge">Social Design</span>
-                        </div>
-                        <button class="mission-btn">VISUALIZZA DETTAGLI</button>
-                    </div>
-
-                    <div class="mission-card completed rare" data-external="https://www.imdb.com/it/name/nm14138071/">
-                        <div class="mission-header">
-                            <span class="mission-status">🎬 COMPLETATA</span>
-                            <span class="mission-reward">+600 XP</span>
-                        </div>
-                        <h3 class="mission-title">Progetti Cinematografici Internazionali</h3>
-                        <p class="mission-description">Esperienza su set cinematografici internazionali, sviluppando competenze nella comunicazione visiva e nel design per il cinema.</p>
-                        <div class="mission-tech">
-                            <span class="tech-badge">Film Design</span>
-                            <span class="tech-badge">Visual Communication</span>
-                            <span class="tech-badge">Set Design</span>
-                        </div>
-                        <button class="mission-btn">VISUALIZZA DETTAGLI</button>
-                    </div>
-
-                    <div class="mission-card completed common" data-project="socialMedia">
-                        <div class="mission-header">
-                            <span class="mission-status">📱 COMPLETATA</span>
-                            <span class="mission-reward">+400 XP</span>
-                        </div>
-                        <h3 class="mission-title">Graphic Design</h3>
-                        <p class="mission-description">Creazione di contenuti grafici e sviluppo di campagne visual coordinate per diversi brand.</p>
-                        <div class="mission-tech">
-                            <span class="tech-badge">Social Media</span>
-                            <span class="tech-badge">Content Design</span>
-                            <span class="tech-badge">Digital Marketing</span>
-                        </div>
-                        <button class="mission-btn">VISUALIZZA DETTAGLI</button>
-                    </div>
-
-                    <div class="mission-card completed legendary" data-project="resolutionTech">
-                        <div class="mission-header">
-                            <span class="mission-status">🌐 SITO WEB</span>
-                            <span class="mission-reward">+1000 XP</span>
-                        </div>
-                        <h3 class="mission-title">Resolution Tech - Sito Web</h3>
-                        <p class="mission-description">Redesign completo del sito e dell'identità digitale di Resolution Tech, dal Figma al lancio online.</p>
-                        <div class="mission-tech">
-                            <span class="tech-badge">Web Design</span>
-                            <span class="tech-badge">Brand Identity</span>
-                            <span class="tech-badge">Figma</span>
-                        </div>
-                        <button class="mission-btn">VISUALIZZA DETTAGLI</button>
-                    </div>
-
-                    <div class="mission-card completed epic" data-project="presentazioneResolutionTech">
-                        <div class="mission-header">
-                            <span class="mission-status">📊 PRESENTAZIONE</span>
-                            <span class="mission-reward">+800 XP</span>
-                        </div>
-                        <h3 class="mission-title">Resolution Tech - Presentazione</h3>
-                        <p class="mission-description">Materiale di presentazione del progetto: brand guidelines, mockup e comunicazione al cliente.</p>
-                        <div class="mission-tech">
-                            <span class="tech-badge">Presentation</span>
-                            <span class="tech-badge">Brand Guidelines</span>
-                        </div>
-                        <button class="mission-btn">VISUALIZZA DETTAGLI</button>
-                    </div>
-
-                </div>
-            </section>
-
-            <section id="skills" class="game-section">
-                <h2 class="section-title">ABILITÀ & POWER-UPS</h2>
-                <div class="skills-inventory">
-                    <div class="skill-category">
-                        <h3 class="category-title">DESIGN TOOLS</h3>
-                        <div class="skill-items">
-                            <div class="skill-item legendary"><span class="skill-name">Adobe Creative Suite</span><span class="skill-level">MASTER</span></div>
-                            <div class="skill-item epic"><span class="skill-name">Figma</span><span class="skill-level">EXPERT</span></div>
-                            <div class="skill-item rare"><span class="skill-name">Sketch</span><span class="skill-level">ADVANCED</span></div>
-                            <div class="skill-item rare"><span class="skill-name">Miro</span><span class="skill-level">ADVANCED</span></div>
-                            <div class="skill-item common"><span class="skill-name">CapCut</span><span class="skill-level">INTERMEDIATE</span></div>
-                            <div class="skill-item common"><span class="skill-name">Edits</span><span class="skill-level">INTERMEDIATE</span></div>
-                        </div>
-                    </div>
-
-                    <div class="skill-category">
-                        <h3 class="category-title">SPECIALIZZAZIONI</h3>
-                        <div class="skill-items">
-                            <div class="skill-item legendary"><span class="skill-name">Graphic Design</span><span class="skill-level">MASTER</span></div>
-                            <div class="skill-item epic"><span class="skill-name">UX/UI Design</span><span class="skill-level">EXPERT</span></div>
-                            <div class="skill-item epic"><span class="skill-name">Brand Identity</span><span class="skill-level">EXPERT</span></div>
-                            <div class="skill-item rare"><span class="skill-name">Package Design</span><span class="skill-level">ADVANCED</span></div>
-                            <div class="skill-item rare"><span class="skill-name">Editorial Design</span><span class="skill-level">ADVANCED</span></div>
-                            <div class="skill-item rare"><span class="skill-name">Copywriting</span><span class="skill-level">ADVANCED</span></div>
-                            <div class="skill-item common"><span class="skill-name">Social Media</span><span class="skill-level">INTERMEDIATE</span></div>
-                            <div class="skill-item common"><span class="skill-name">Salesforce Development</span><span class="skill-level">BASIC</span></div>
-                        </div>
-                    </div>
-
-                    <div class="skill-category">
-                        <h3 class="category-title">COMPETENZE UX/UI</h3>
-                        <div class="skill-items">
-                            <div class="skill-item epic"><span class="skill-name">UX Research</span><span class="skill-level">EXPERT</span></div>
-                            <div class="skill-item epic"><span class="skill-name">Accessibilità</span><span class="skill-level">EXPERT</span></div>
-                            <div class="skill-item epic"><span class="skill-name">Wireframing</span><span class="skill-level">EXPERT</span></div>
-                            <div class="skill-item rare"><span class="skill-name">User-Centered Design</span><span class="skill-level">ADVANCED</span></div>
-                            <div class="skill-item rare"><span class="skill-name">Prototyping</span><span class="skill-level">ADVANCED</span></div>
-                        </div>
-                    </div>
-
-                    <div class="skill-category">
-                        <h3 class="category-title">SVILUPPO WEB</h3>
-                        <div class="skill-items">
-                            <div class="skill-item common"><span class="skill-name">HTML</span><span class="skill-level">BASIC</span></div>
-                            <div class="skill-item common"><span class="skill-name">CSS</span><span class="skill-level">BASIC</span></div>
-                            <div class="skill-item common"><span class="skill-name">JavaScript</span><span class="skill-level">BASIC</span></div>
-                            <div class="skill-item common"><span class="skill-name">Java</span><span class="skill-level">BASIC</span></div>
-                        </div>
-                    </div>
-
-                    <div class="skill-category">
-                        <h3 class="category-title">ACHIEVEMENTS</h3>
-                        <div class="skill-items">
-                            <div class="skill-item legendary"><span class="skill-name">Diploma Grafica Pubblicitaria</span><span class="skill-level">COMPLETED</span></div>
-                            <div class="skill-item epic"><span class="skill-name">Master UX/UI Design</span><span class="skill-level">COMPLETED</span></div>
-                            <div class="skill-item epic"><span class="skill-name">Finalista "Talenti Accesi"</span><span class="skill-level">2025</span></div>
-                            <div class="skill-item rare"><span class="skill-name">Autrice Libro</span><span class="skill-level">PUBLISHED</span></div>
-                            <div class="skill-item rare"><span class="skill-name">Cinema Internazionale</span><span class="skill-level">EXPERIENCED</span></div>
-                            <div class="skill-item common"><span class="skill-name">Salesforce Certified</span><span class="skill-level">2023</span></div>
+                        <div class="reels-side">
+                            <h3 class="msd-list-title">Cosa trovi sulla pagina</h3>
+                            <ul class="msd-list">
+                                <li>La storia della grafica italiana, a puntate</li>
+                                <li>I libri di design che vale la pena leggere</li>
+                                <li>Tool e risorse per designer e freelance</li>
+                                <li>I concorsi di design del mese</li>
+                            </ul>
+                            <a class="reels-all" href="https://www.instagram.com/my.secret.design/reels/" target="_blank" rel="noopener">Guarda tutti i reel</a>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section id="cv" class="game-section">
-                <h2 class="section-title">CURRICULUM VITAE</h2>
-                <div class="cv-container">
-                    <div class="cv-header">
-                        <div class="cv-personal-info">
-                            <h3 class="cv-name">Alice Martinazzoli</h3>
-                            <p class="cv-title">Graphic Designer - UX/UI Designer</p>
-                            <div class="cv-contacts">
-                                <div class="cv-contact-item"><span class="contact-icon">📧</span><span>alicemartinazzoli95@icloud.com</span></div>
-                                <div class="cv-contact-item"><span class="contact-icon">📱</span><span>+39 346 1732527</span></div>
+            <section class="section about" id="chi-sono">
+                <div class="wrap about-grid">
+                    <figure class="about-figure">
+                        <img src="img/alice_martinazzoli.jpg" alt="Alice Martinazzoli con una macchina fotografica davanti al viso" width="800" height="800" decoding="async">
+                        <figcaption class="hand">io, dietro l'obiettivo</figcaption>
+                    </figure>
+                    <div class="about-text">
+                        <h2 class="section-title">Chi sono</h2>
+                        <p class="lead">
+                            Sono una digital designer e video editor con esperienza in branding,
+                            comunicazione visiva e progetti digitali.
+                        </p>
+                        <p>
+                            Dopo il diploma in grafica all'International School of Comics e il master in UX/UI
+                            di Start2Impact University, ho sviluppato un approccio al design orientato alla coerenza
+                            del brand e all'esperienza dell'utente. Nel 2025 sono stata finalista al concorso
+                            "Talenti Accesi" di Torcha con il restyling della lattina BOEM.
+                        </p>
+                        <p>
+                            Ho lavorato anche per il cinema e la tv, collaborando a produzioni internazionali.
+                            In parallelo gestisco My Secret Design, la mia pagina dedicata al design,
+                            dove curo ideazione, riprese e montaggio dei contenuti.
+                        </p>
+
+                        <div class="skills">
+                            <div>
+                                <h3>Design</h3>
+                                <ul>
+                                    <li>Brand identity</li>
+                                    <li>Graphic design</li>
+                                    <li>Editorial design</li>
+                                    <li>Package design</li>
+                                    <li>Copywriting</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3>UX/UI</h3>
+                                <ul>
+                                    <li>UX research</li>
+                                    <li>Accessibilità</li>
+                                    <li>Wireframing</li>
+                                    <li>Prototipazione</li>
+                                    <li>UI design</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3>Video e social</h3>
+                                <ul>
+                                    <li>Riprese con attrezzatura propria</li>
+                                    <li>Video editing</li>
+                                    <li>Reel e caroselli</li>
+                                    <li>Piano editoriale</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3>Strumenti</h3>
+                                <ul>
+                                    <li>Adobe Creative Suite</li>
+                                    <li>Figma, Sketch, Miro</li>
+                                    <li>CapCut, Edits</li>
+                                    <li>Basi di HTML, CSS, JavaScript</li>
+                                </ul>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" id="esperienza">
+                <div class="wrap">
+                    <!-- Intestazione che compare solo nel PDF del CV -->
+                    <div class="print-only cv-print-head">
+                        <p class="cv-print-name">Alice Martinazzoli</p>
+                        <p>Digital designer</p>
+                        <p>alicemartinazzoli95@icloud.com | +39 346 1732527 | alice230295.github.io/Portfolio_Designer | Instagram @my.secret.design</p>
+                    </div>
+
+                    <div class="section-head">
+                        <h2 class="section-title">Esperienza</h2>
                         <div class="cv-download">
-                            <button class="download-btn" id="downloadCvBtn">
-                                <span class="btn-icon">📄</span>
-                                <span>SCARICA CV PDF</span>
-                            </button>
+                            <button class="btn btn-primary" id="cvBtn" type="button">Scarica il CV in PDF</button>
+                            <p class="hint">Si apre la finestra di stampa: scegli "Salva come PDF".</p>
                         </div>
                     </div>
 
                     <div class="cv-grid">
-                        <div class="cv-section experience">
-                            <h3 class="cv-section-title">ESPERIENZA LAVORATIVA</h3>
-                        <div class="cv-item">
-                                <div class="cv-item-header"><h4>Video Editor</h4><span class="cv-period">2026</span></div>
-                                <p class="cv-company">Standup Way</p>
-                                <ul class="cv-description">
-                                    <li>Montaggio di contenuti video e short-form per canali social e YouTube, con focus su engagement, retention e forte impatto visivo</li>
-                                </ul>
-                            </div>
-                              <div class="cv-item">
-                                <div class="cv-item-header"><h4>UX/UI Designer</h4><span class="cv-period">2026</span></div>
-                                <p class="cv-company">AMA Properties</p>
-                                <ul class="cv-description">
-                                    <li>Selezionata tra i 4 migliori partecipanti del corso intensivo di UX/UI Design di 6 settimane organizzato da Masamune Srl.</li>
-                                    <li>Collaborazione con AMA Properties nella progettazione e ottimizzazione dell’esperienza digitale del brand, attraverso sviluppo di landing page, analisi delle criticità UX del sito esistente</li>
-                                    <li>Definizione del PED (Piano Editoriale Digitale) e realizzazione di materiali grafici per i canali social</li>
-                                </ul>
-                            </div>
-                            <div class="cv-item">
-                                <div class="cv-item-header"><h4>Graphic Designer</h4><span class="cv-period">2023 - 2024</span></div>
-                                <p class="cv-company">LGA Service - Roma</p>
-                                <ul class="cv-description">
-                                    <li>Sviluppo di materiali di marketing, presentazioni e comunicazioni visive</li>
-                                    <li>Miglioramento dell'immagine aziendale attraverso design coeso e d'impatto</li>
-                                    <li>Combinazione dell'eredità aziendale con tendenze del design contemporaneo</li>
-                                </ul>
-                            </div>
-
-                            <div class="cv-item">
-                                <div class="cv-item-header"><h4>Graphic Designer</h4><span class="cv-period">2022</span></div>
-                                <p class="cv-company">Panorama Films srl - Roma</p>
-                                <ul class="cv-description">
-                                    <li>Esperienza internazionale per la serie TV "Concordia" (ZDF STUDIOS)</li>
-                                    <li>Creazione di packaging, etichette, segnaletica e grafiche per veicoli</li>
-                                    <li>Collaborazione in contesto multiculturale con scadenze strette</li>
-                                    <li>Contributo al storytelling visivo cinematografico</li>
-                                </ul>
-                            </div>
-
-                            <div class="cv-item">
-                                <div class="cv-item-header"><h4>Graphic Designer</h4><span class="cv-period">2018 - 2021</span></div>
-                                <p class="cv-company">MP Partners - Costa Volpino (BG)</p>
-                                <ul class="cv-description">
-                                    <li>Crescita da Junior a referente Comunicazione e Marketing</li>
-                                    <li>Sviluppo di campagne visive, materiali editoriali e branding</li>
-                                    <li>Transizione organica verso gestione Marketing</li>
-                                    <li>Definizione ed esecuzione di strategie di marketing</li>
-                                </ul>
-                            </div>
-
-                            <div class="cv-item">
-                                <div class="cv-item-header"><h4>Social Media Manager</h4><span class="cv-period">2017</span></div>
-                                <p class="cv-company">Cassette Venturi - Darfo B.T. (BS)</p>
-                                <ul class="cv-description">
-                                    <li>Sviluppo piano editoriale strategico per social media</li>
-                                    <li>Creazione grafiche e shooting fotografici prodotti</li>
-                                    <li>Gestione canali Facebook e Instagram</li>
-                                </ul>
-                            </div>
+                        <div>
+                            <h3 class="cv-col-title">Lavoro</h3>
+                            <ol class="timeline">
+                                <!-- Per aggiungere una posizione copia un blocco <li>...</li> e cambia i testi -->
+                                <li>
+                                    <p class="when">Da dicembre 2026</p>
+                                    <h4>Video e contenuti social</h4>
+                                    <p class="where">Collaborazione con una designer</p>
+                                    <p>Riprese, editing video e creazione di caroselli, con attrezzatura propria.</p>
+                                </li>
+                                <li class="now">
+                                    <p class="when">Novembre 2026 – oggi</p>
+                                    <h4>Digital designer</h4>
+                                    <p class="where">Blum, agenzia di comunicazione dell'innovazione</p>
+                                    <p>Collaborazione continuativa da remoto.</p>
+                                </li>
+                                <li class="now">
+                                    <p class="when">Maggio 2026 – oggi</p>
+                                    <h4>Video editor</h4>
+                                    <p class="where">StandUp Way</p>
+                                    <p>Montaggio di video e contenuti short-form per social e YouTube, con attenzione a engagement, retention e impatto visivo.</p>
+                                </li>
+                                <li>
+                                    <p class="when">2026</p>
+                                    <h4>UX/UI designer</h4>
+                                    <p class="where">AMA Properties</p>
+                                    <p>Landing page e analisi delle criticità UX del sito esistente. Definizione del piano editoriale digitale e grafiche per i canali social.</p>
+                                </li>
+                                <li>
+                                    <p class="when">2023 – 2024</p>
+                                    <h4>Graphic designer</h4>
+                                    <p class="where">LGA Service, Roma</p>
+                                    <p>Materiali di marketing, presentazioni e comunicazione visiva, per un'immagine aziendale più coerente e attuale.</p>
+                                </li>
+                                <li>
+                                    <p class="when">2022</p>
+                                    <h4>Graphic designer</h4>
+                                    <p class="where">Panorama Films, Roma</p>
+                                    <p>Grafica di scena per la serie tv "Concordia" (ZDF Studios): packaging, etichette, segnaletica e grafiche per veicoli, in un team internazionale.</p>
+                                </li>
+                                <li>
+                                    <p class="when">2018 – 2021</p>
+                                    <h4>Graphic designer</h4>
+                                    <p class="where">MP Partners, Costa Volpino (BG)</p>
+                                    <p>Da junior a referente per comunicazione e marketing: campagne visive, materiali editoriali, branding e strategie di marketing.</p>
+                                </li>
+                                <li>
+                                    <p class="when">2017</p>
+                                    <h4>Social media manager</h4>
+                                    <p class="where">Cassette Venturi, Darfo Boario Terme (BS)</p>
+                                    <p>Piano editoriale, grafiche, shooting dei prodotti e gestione di Facebook e Instagram.</p>
+                                </li>
+                            </ol>
                         </div>
 
-                        <div class="cv-section education">
-                            <h3 class="cv-section-title">ISTRUZIONE</h3>
+                        <div>
+                            <h3 class="cv-col-title">Formazione</h3>
+                            <ol class="timeline">
+                                <li>
+                                    <p class="when">2026</p>
+                                    <h4>Corso di specializzazione UX/UI design</h4>
+                                    <p class="where">Masamune</p>
+                                    <p>Sei settimane intensive su ricerca utente, progettazione e prototipazione in Figma. Selezionata tra i 4 migliori partecipanti.</p>
+                                </li>
+                                <li>
+                                    <p class="when">2025</p>
+                                    <h4>Master UX/UI design</h4>
+                                    <p class="where">Start2Impact University</p>
+                                    <p>Discovery, accessibilità, wireframing e interfacce con metodo user-centered.</p>
+                                </li>
+                                <li>
+                                    <p class="when">2023</p>
+                                    <h4>Salesforce developer</h4>
+                                    <p class="where">Generation Italy</p>
+                                    <p>Corso intensivo di sviluppo su Salesforce, con focus sul back-end.</p>
+                                </li>
+                                <li>
+                                    <p class="when">2019</p>
+                                    <h4>UI design</h4>
+                                    <p class="where">Lacerba.io</p>
+                                    <p>Design visivo, tipografia, colore e interfacce responsive.</p>
+                                </li>
+                                <li>
+                                    <p class="when">2015 – 2018</p>
+                                    <h4>Diploma in grafica pubblicitaria</h4>
+                                    <p class="where">International School of Comics, Brescia</p>
+                                    <p>Grafica pubblicitaria, editoria, brand identity e packaging.</p>
+                                </li>
+                            </ol>
 
-                             <div class="cv-item">
-                                <div class="cv-item-header"><h4>Corso di specializzazione UX/UI Designer</h4><span class="cv-period">2026</span></div>
-                                <p class="cv-company">Masamune srl</p>
-                                <p class="cv-description-text">Percorso intensivo di 6 settimane in UX/UI Design, focalizzato su ricerca utente, progettazione e prototipazione con Figma. Il programma combina teoria e pratica quotidiana su progetti reali, coprendo funzionalità base e avanzate. Include un progetto finale in team e una simulazione di contesto professionale con sviluppo di case study, asset per il portfolio e presentazione del progetto</p>
-                            </div>
-                            <div class="cv-item">
-                                <div class="cv-item-header"><h4>Master UX/UI Designer</h4><span class="cv-period">2025</span></div>
-                                <p class="cv-company">Start2Impact University</p>
-                                <p class="cv-description-text">Master completato con esperienza comprovata in Discovery, Accessibilità e Wireframing, utilizzando metodologie user-centered per ottimizzare l'esperienza utente.</p>
-                            </div>
-
-                            <div class="cv-item">
-                                <div class="cv-item-header"><h4>Salesforce Developer</h4><span class="cv-period">2023</span></div>
-                                <p class="cv-company">Generation Italy</p>
-                                <p class="cv-description-text">Corso intensivo in Salesforce Development con focus sul back-end, acquisendo competenze tecniche nel CRM.</p>
-                            </div>
-
-                            <div class="cv-item">
-                                <div class="cv-item-header"><h4>UI Designer</h4><span class="cv-period">2019</span></div>
-                                <p class="cv-company">Lacerba.io</p>
-                                <p class="cv-description-text">Corso specializzato in User Interface Design, approfondendo principi di design visivo, tipografia, teoria del colore e progettazione di interfacce responsive.</p>
-                            </div>
-
-                            <div class="cv-item">
-                                <div class="cv-item-header"><h4>Diploma Grafica Pubblicitaria</h4><span class="cv-period">2015 - 2018</span></div>
-                                <p class="cv-company">International School of Comics - Brescia</p>
-                                <p class="cv-description-text">Formazione completa in grafica pubblicitaria, design editoriale, brand identity, packaging design e comunicazione visiva.</p>
-                            </div>
+                            <h3 class="cv-col-title">Riconoscimenti</h3>
+                            <ul class="plain-list">
+                                <li>Finalista "Talenti Accesi" di Torcha, 2025</li>
+                                <li>Autrice del libro su Gino Zamprioli, make up artist</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section id="contact" class="game-section">
-                <h2 class="section-title">CONTATTI</h2>
-                <div class="contact-container">
-                    <div class="contact-info">
-                        <div class="contact-card">
-                            <h3>Parliamo del tuo progetto!</h3>
-                            <p>Sono sempre alla ricerca di nuove sfide creative. Hai un'idea in mente? Contattami!</p>
-                            <div class="contact-details">
-                                <div class="contact-item"><span class="contact-icon">📧</span><a href="mailto:alicemartinazzoli95@icloud.com">alicemartinazzoli95@icloud.com</a></div>
-                                <div class="contact-item"><span class="contact-icon">📱</span><a href="tel:+393461732527">+39 346 1732527</a></div>
-                                <div class="contact-item"><span class="contact-icon">🎨</span><a href="https://www.behance.net/alicemarti563e" target="_blank">Behance Portfolio</a></div>
-                                <div class="contact-item"><span class="contact-icon">💼</span><a href="https://www.linkedin.com/in/alice-martinazzoli" target="_blank">LinkedIn</a></div>
-                            </div>
-                        </div>
+            <section class="contact" id="contatti">
+                <div class="wrap contact-grid">
+                    <div>
+                        <p class="hand contact-hello">hai un'idea?</p>
+                        <h2 class="contact-title">Parliamone</h2>
+                        <p class="lead">Un progetto, una collaborazione o solo una domanda: scrivimi, rispondo volentieri.</p>
+                        <a class="contact-mail" href="mailto:alicemartinazzoli95@icloud.com">alicemartinazzoli95@icloud.com</a>
+                        <ul class="contact-links">
+                            <li><a href="tel:+393461732527">+39 346 1732527</a></li>
+                            <li><a href="https://www.instagram.com/my.secret.design/" target="_blank" rel="noopener">Instagram</a></li>
+                            <li><a href="https://www.linkedin.com/in/alice-martinazzoli" target="_blank" rel="noopener">LinkedIn</a></li>
+                            <li><a href="https://www.behance.net/alicemarti563e" target="_blank" rel="noopener">Behance</a></li>
+                        </ul>
                     </div>
 
-                    <div class="contact-form-container">
-                        <form id="contactForm" class="contact-form">
-                            <h3>Invia un messaggio</h3>
-                            <div class="form-group">
-                                <label for="user_name">Nome *</label>
-                                <input type="text" id="user_name" name="user_name" required placeholder="Il tuo nome">
-                            </div>
-                            <div class="form-group">
-                                <label for="user_email">Email *</label>
-                                <input type="email" id="user_email" name="user_email" required placeholder="La tua email">
-                            </div>
-                            <div class="form-group">
-                                <label for="subject">Oggetto *</label>
-                                <input type="text" id="subject" name="subject" required placeholder="Oggetto del messaggio">
-                            </div>
-                            <div class="form-group">
-                                <label for="message">Messaggio *</label>
-                                <textarea id="message" name="message" rows="5" required placeholder="Scrivi il tuo messaggio..."></textarea>
-                            </div>
-                            <button type="submit" class="submit-btn" id="submitBtn">
-                                <span>INVIA MESSAGGIO</span>
-                            </button>
-                            <div id="formStatus" class="form-status"></div>
-                        </form>
-                    </div>
+                    <form class="contact-form" id="contactForm">
+                        <div class="field">
+                            <label for="cfName">Nome</label>
+                            <input id="cfName" name="name" type="text" autocomplete="name" required>
+                        </div>
+                        <div class="field">
+                            <label for="cfSubject">Di cosa si tratta</label>
+                            <input id="cfSubject" name="subject" type="text" placeholder="Es. logo per un nuovo brand">
+                        </div>
+                        <div class="field">
+                            <label for="cfMessage">Messaggio</label>
+                            <textarea id="cfMessage" name="message" rows="5" required></textarea>
+                        </div>
+                        <button class="btn btn-accent" type="submit">Apri l'email con il messaggio</button>
+                        <p class="hint">Il messaggio si apre già compilato nella tua app di posta: controlla e invia.</p>
+                    </form>
                 </div>
             </section>
-
-        </main>
-
-        <footer class="game-footer">
-            <div class="footer-compact">
-                <div class="footer-left">
-                    <p class="footer-copyright">© 2026 Alice Martinazzoli</p>
-                </div>
-                <div class="footer-center">
-                    <p class="footer-thanks">❤️ Grazie per aver visitato il mio portfolio!</p>
-                </div>
-                <div class="footer-right">
-                    <a href="mailto:alicemartinazzoli95@icloud.com" class="footer-link-icon" title="Email">
-                        <span class="icon">📧</span><span class="text">Email</span>
-                    </a>
-                    <a href="https://www.linkedin.com/in/alice-martinazzoli" target="_blank" class="footer-link-icon" title="LinkedIn">
-                        <span class="icon">💼</span><span class="text">LinkedIn</span>
-                    </a>
-                    <a href="https://www.behance.net/alicemarti563e" target="_blank" class="footer-link-icon" title="Behance">
-                        <span class="icon">🎨</span><span class="text">Behance</span>
-                    </a>
-                    <a href="tel:+393461732527" class="footer-link-icon" title="Telefono">
-                        <span class="icon">📱</span><span class="text">Telefono</span>
-                    </a>
-                </div>
-            </div>
-        </footer>
-    </div>
-
-    <div class="gallery-modal-overlay" id="galleryModal">
-        <div class="gallery-modal">
-            <button class="gallery-close" id="galleryClose" aria-label="Chiudi">✕</button>
-            <div class="gallery-tabs" id="galleryTabs"></div>
-            <div class="gallery-image-wrap">
-                <button class="gallery-arrow gallery-arrow-left" id="galleryPrev" aria-label="Precedente">‹</button>
-                <img class="gallery-image" id="galleryImage" src="" alt="">
-                <video class="gallery-image" id="galleryVideo" controls style="display:none;"></video>
-                <button class="gallery-arrow gallery-arrow-right" id="galleryNext" aria-label="Successiva">›</button>
-            </div>
-            <div class="gallery-dots" id="galleryDots"></div>
-            <div class="gallery-info">
-                <h3 id="galleryTitle"></h3>
-                <p id="galleryDescription"></p>
-                <div class="gallery-tags" id="galleryTags"></div>
-            </div>
         </div>
-    </div>
+
+        <!-- ================= PAGINA DEL SINGOLO PROGETTO (riempita da script.js) ================= -->
+        <article id="projectView" class="project-page" hidden></article>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="wrap footer-inner">
+            <p>© 2026 Alice Martinazzoli</p>
+            <p>
+                <a href="https://www.instagram.com/my.secret.design/" target="_blank" rel="noopener">Instagram</a>
+                <a href="https://www.linkedin.com/in/alice-martinazzoli" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="https://www.behance.net/alicemarti563e" target="_blank" rel="noopener">Behance</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Visualizzatore a tutto schermo delle immagini -->
+    <dialog class="lightbox" id="lightbox" aria-label="Immagine ingrandita">
+        <button class="lb-close" id="lbClose" type="button" aria-label="Chiudi">Chiudi</button>
+        <button class="lb-arrow lb-prev" id="lbPrev" type="button" aria-label="Immagine precedente">‹</button>
+        <img id="lbImage" alt="">
+        <button class="lb-arrow lb-next" id="lbNext" type="button" aria-label="Immagine successiva">›</button>
+        <p class="lb-counter" id="lbCounter" aria-live="polite"></p>
+    </dialog>
 
     <script src="script.js"></script>
 </body>
