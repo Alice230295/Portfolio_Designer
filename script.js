@@ -1,706 +1,540 @@
-console.log('🚀 Caricamento Portfolio Alice...');
+/* =====================================================================
+   PORTFOLIO ALICE MARTINAZZOLI
+   Tutti i progetti sono nell'elenco PROJECTS qui sotto.
+   Per aggiungerne o modificarne uno basta cambiare questo elenco:
+   le schede in home e la pagina del progetto si creano da sole.
+   ===================================================================== */
 
-let isMenuOpen = false;
-let loadingComplete = false;
+const EMAIL = 'alicemartinazzoli95@icloud.com';
+const IMG = 'img/projects/';
 
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('✅ DOM caricato, inizializzazione portfolio...');
-    startLoadingAnimation();
-    setTimeout(function() {
-        finishLoading();
-        initPortfolio();
-    }, 1000);
+/* Crea l'elenco dei file di una cartella: 01.webp, 02.webp, ...
+   opzioni: pad (numeri con lo zero davanti), ext (estensione),
+   cover (aggiunge Copertina in testa), skip (numeri da saltare),
+   other (file con estensione diversa, es. { 4: 'jpg' }) */
+function files(folder, from, to, opt) {
+    opt = Object.assign({ pad: true, ext: 'webp', cover: false, skip: [], other: {} }, opt);
+    const list = [];
+    if (opt.cover) list.push(IMG + folder + '/Copertina.' + opt.ext);
+    for (let i = from; i <= to; i++) {
+        if (opt.skip.indexOf(i) !== -1) continue;
+        const n = opt.pad ? String(i).padStart(2, '0') : String(i);
+        list.push(IMG + folder + '/' + n + '.' + (opt.other[i] || opt.ext));
+    }
+    return list;
+}
+
+const PROJECTS = [
+    {
+        id: 'jojob',
+        title: 'Jojob Real Time Carpooling',
+        subtitle: 'Redesign UX/UI del sito, dalla ricerca ai test',
+        categories: ['UX/UI'],
+        featured: true,
+        cover: IMG + 'User Interface/17.webp',
+        facts: [
+            ['Contesto', 'Master UX/UI, Start2Impact University'],
+            ['Anno', '2025'],
+            ['Ruolo', 'Ricerca, UX, UI, test'],
+            ['Strumenti', 'Figma, Miro']
+        ],
+        text: [
+            'Ho analizzato e riprogettato il sito di Jojob Real Time Carpooling, il servizio di carpooling per aziende e pendolari. Il progetto copre tutto il percorso: dalla ricerca iniziale all\'interfaccia finale, verificata con gli utenti.',
+            'Ogni fase è documentata qui sotto: scegli una scheda per vedere il lavoro.'
+        ],
+        tabs: [
+            {
+                label: 'Discovery',
+                text: 'Analisi del cliente, dei competitor e del sito esistente. Valutazione euristica, questionario di 17 domande e user personas per capire chi usa il servizio e dove incontra difficoltà.',
+                images: files('Discovery', 1, 78, { cover: true })
+            },
+            {
+                label: 'Accessibilità',
+                text: 'Personas con diverse disabilità, user journey e analisi pagina per pagina del sito secondo i quattro principi dell\'accessibilità: contrasti, testi alternativi, alternative ai gesti di trascinamento.',
+                images: files('Accessibilità', 1, 61, { cover: true, other: { 61: 'jpg' } })
+            },
+            {
+                label: 'Wireframe',
+                text: 'Wireframe delle pagine principali in versione desktop e mobile, con le scelte spiegate sezione per sezione.',
+                images: files('Wireframe', 1, 44, { cover: true })
+            },
+            {
+                label: 'Interfaccia',
+                text: 'Interfaccia finale in Figma: palette, tipografia, contrasti verificati ai livelli AA e AAA, navigazione da tastiera e screen reader, microinterazioni e mockup.',
+                images: files('User Interface', 1, 26)
+            },
+            {
+                label: 'Test utenti',
+                text: 'Due sessioni di test sul flusso di ricerca dei passaggi, con osservazioni e miglioramenti emersi.',
+                images: files('User Test parte 1', 1, 13, { pad: false, ext: 'jpg' })
+                    .concat(files('User Test parte 2', 1, 12, { pad: false, ext: 'jpg' }))
+            }
+        ]
+    },
+    {
+        id: 'boem',
+        title: 'Lattina BOEM',
+        subtitle: 'Restyling del packaging, finalista a Talenti Accesi 2025',
+        categories: ['Branding'],
+        featured: true,
+        badge: 'Finalista Talenti Accesi 2025',
+        cover: IMG + 'BOEM/02.webp',
+        coverZoom: 1.4,            /* ingrandisce la copertina sulla lattina */
+        coverOrigin: 'right center',
+        facts: [
+            ['Contesto', 'Concorso "Talenti Accesi" di Torcha'],
+            ['Anno', '2025'],
+            ['Ambito', 'Branding, package design'],
+            ['Risultato', 'Progetto finalista']
+        ],
+        text: [
+            'Proposta di restyling per la lattina dell\'hard seltzer BOEM. La grafica parte dai valori del brand: freschezza, condivisione, innovazione e sostenibilità, con colori vivaci e bolle stilizzate che richiamano la frizzantezza della bevanda.',
+            'Un QR code integrato nel design porta a playlist su Spotify e filtri Instagram, così la lattina diventa anche un invito a condividere il momento.'
+        ],
+        images: files('BOEM', 1, 6)
+    },
+    {
+        id: 'resolution-tech',
+        title: 'Resolution Tech',
+        subtitle: 'Rebranding e redesign del sito',
+        categories: ['UX/UI', 'Branding'],
+        cover: IMG + 'Resolution Tech/1.jpg',
+        coverPos: 'left center',
+        facts: [
+            ['Cliente', 'Resolution Tech'],
+            ['Ambito', 'Logo, brand system, sito web'],
+            ['Strumenti', 'Figma']
+        ],
+        text: [
+            'Redesign completo del sito e dell\'identità digitale di Resolution Tech, dal Figma al lancio online. Sono partita dai limiti del vecchio logo, ho proposto tre direzioni e costruito un brand system completo, poi ho ripensato architettura e contenuti del sito.'
+        ],
+        tabs: [
+            {
+                label: 'Logo e brand system',
+                text: 'Analisi del logo esistente, tre proposte e il sistema di colori, testi e stati per il digitale.',
+                images: files('Resolution Tech', 1, 20, { pad: false, ext: 'jpg' })
+            },
+            {
+                label: 'Analisi e redesign del sito',
+                text: 'Opportunità di miglioramento, nuova architettura, contenuti pagina per pagina e piano di lavoro presentati al cliente.',
+                images: files('Presentazione Resolution Tech', 1, 42, { pad: false, ext: 'jpg', skip: [19] })
+            }
+        ]
+    },
+    {
+        id: 'gino-zamprioli',
+        title: 'Gino Zamprioli. Make up artist dal 1967',
+        subtitle: 'Progetto editoriale e impaginazione del libro',
+        categories: ['Editoria'],
+        cover: IMG + 'Design Book/05.webp',
+        facts: [
+            ['Ambito', 'Editorial design, impaginazione, tipografia'],
+            ['Risultato', 'Libro pubblicato']
+        ],
+        text: [
+            'Libro fotografico dedicato a una figura storica del trucco cinematografico. Ho curato il progetto dalla ricerca alla realizzazione grafica: struttura, griglia, tipografia e impaginazione di foto di scena e testi, film dopo film.'
+        ],
+        images: files('Design Book', 1, 5)
+    },
+    {
+        id: 'planty-of-food',
+        title: 'Planty of Food',
+        subtitle: 'Logo e manuale d\'uso del marchio',
+        categories: ['Branding'],
+        cover: IMG + 'Logo design/Copertina.webp',
+        facts: [
+            ['Contesto', 'Start2Impact University'],
+            ['Ambito', 'Logo design, brand identity']
+        ],
+        text: [
+            'Redesign del logo di Planty of Food, e-commerce che promuove un\'alimentazione plant based sostenibile e accessibile. Il marchio unisce la foglia e la forchetta; il manuale definisce configurazioni, dimensioni minime, colori, usi impropri, tipografia, icone e comunicazione social.'
+        ],
+        images: files('Logo design', 1, 19, { cover: true })
+    },
+    {
+        id: 'cinetattoo',
+        title: 'Tatuaggi di scena per Birra Moretti',
+        subtitle: 'Tatuaggi finti su misura per uno spot',
+        categories: ['Cinema e tv'],
+        cover: IMG + 'Cinetattoo/03.webp',
+        facts: [
+            ['Progetto', 'Cinetattoo'],
+            ['Ambito', 'Design su misura, advertising']
+        ],
+        text: [
+            'Tatuaggi finti personalizzati per lo spot pubblicitario di Birra Moretti: disegno realistico pensato per il personaggio e applicazione professionale sul set.'
+        ],
+        images: files('Cinetattoo', 1, 6, { other: { 6: 'png' } })
+    },
+    {
+        id: 'brand-e-stampa',
+        title: 'Brand e materiali stampati',
+        subtitle: 'Loghi, coordinati, brochure e insegne per diversi clienti',
+        categories: ['Branding'],
+        cover: IMG + 'Graphic Design/01.webp',
+        facts: [
+            ['Ambito', 'Loghi, immagine coordinata, stampa']
+        ],
+        text: [
+            'Una selezione di lavori di graphic design: loghi, biglietti da visita, brochure, merchandising, shopper e insegne realizzati per clienti di settori diversi.'
+        ],
+        images: files('Graphic Design', 1, 15, { other: { 4: 'jpg' } })
+    },
+    {
+        id: 'video-editing',
+        title: 'Video editing',
+        subtitle: 'Montaggi per social e produzioni più curate',
+        categories: ['Video'],
+        type: 'video',
+        cover: IMG + 'Video editing/03.mp4',
+        facts: [
+            ['Ambito', 'Montaggio, storytelling'],
+            ['Strumenti', 'CapCut, Edits']
+        ],
+        text: [
+            'Una selezione di montaggi: contenuti brevi per i social e video più lunghi, costruiti su ritmo, storytelling e montaggio dinamico.'
+        ],
+        images: files('Video editing', 1, 5, { ext: 'mp4' })
+    },
+    {
+        id: 'cinema-tv',
+        title: 'Grafica di scena per cinema e tv',
+        subtitle: 'Produzioni internazionali, tra cui la serie "Concordia"',
+        categories: ['Cinema e tv'],
+        external: 'https://www.imdb.com/it/name/nm14138071/',
+        externalLabel: 'Vedi su IMDb'
+    }
+];
+
+/* ===================================================================== */
+
+const byId = {};
+PROJECTS.forEach(function (p) { byId[p.id] = p; });
+
+const homeView = document.getElementById('homeView');
+const projectView = document.getElementById('projectView');
+const grid = document.getElementById('projectGrid');
+const filtersBox = document.getElementById('filters');
+const HOME_TITLE = document.title;
+const THUMBS_SHOWN = 6;
+
+let activeFilter = 'Tutti';
+let homeScroll = null;
+
+function el(tag, attrs, children) {
+    const node = document.createElement(tag);
+    Object.keys(attrs || {}).forEach(function (k) {
+        if (k === 'class') node.className = attrs[k];
+        else if (k === 'text') node.textContent = attrs[k];
+        else node.setAttribute(k, attrs[k]);
+    });
+    (children || []).forEach(function (c) { if (c) node.appendChild(c); });
+    return node;
+}
+
+/* ---------- Schede dei progetti in home ---------- */
+
+function renderFilters() {
+    const cats = ['Tutti'];
+    PROJECTS.forEach(function (p) {
+        p.categories.forEach(function (c) { if (cats.indexOf(c) === -1) cats.push(c); });
+    });
+    filtersBox.innerHTML = '';
+    cats.forEach(function (c) {
+        const b = el('button', { type: 'button', class: 'chip', 'aria-pressed': String(c === activeFilter), text: c });
+        b.addEventListener('click', function () {
+            activeFilter = c;
+            renderFilters();
+            renderGrid();
+        });
+        filtersBox.appendChild(b);
+    });
+}
+
+function coverNode(p) {
+    if (!p.cover) {
+        return el('div', { class: 'card-cover card-cover-text', 'aria-hidden': 'true' }, [
+            el('span', { text: 'Cinema e tv' })
+        ]);
+    }
+    const box = el('div', { class: 'card-cover' });
+    if (p.type === 'video') {
+        const v = el('video', { src: p.cover + '#t=1', preload: 'metadata', playsinline: '', tabindex: '-1', 'aria-hidden': 'true' });
+        v.muted = true;
+        box.appendChild(v);
+        box.appendChild(el('span', { class: 'play-mark', 'aria-hidden': 'true', text: '▶' }));
+    } else {
+        const img = el('img', { src: p.cover, alt: '', loading: 'lazy', decoding: 'async' });
+        if (p.coverPos) img.style.objectPosition = p.coverPos;
+        if (p.coverZoom) {
+            img.style.transform = 'scale(' + p.coverZoom + ')';
+            img.style.transformOrigin = p.coverOrigin || 'center';
+        }
+        box.appendChild(img);
+    }
+    if (p.badge) box.appendChild(el('span', { class: 'card-badge', text: p.badge }));
+    return box;
+}
+
+function renderGrid() {
+    grid.innerHTML = '';
+    const list = PROJECTS.filter(function (p) {
+        return activeFilter === 'Tutti' || p.categories.indexOf(activeFilter) !== -1;
+    });
+    list.forEach(function (p) {
+        let cls = 'card';
+        if (activeFilter === 'Tutti' && p.featured) cls += ' card-featured';
+        if (activeFilter === 'Tutti' && p.external) cls += ' card-wide';
+        const attrs = { class: cls };
+        if (p.external) {
+            attrs.href = p.external;
+            attrs.target = '_blank';
+            attrs.rel = 'noopener';
+        } else {
+            attrs.href = '#/progetto/' + p.id;
+        }
+        const card = el('a', attrs, [
+            coverNode(p),
+            el('div', { class: 'card-body' }, [
+                el('p', { class: 'card-cat', text: p.categories.join(', ') }),
+                el('h3', { class: 'card-title', text: p.title }),
+                el('p', { class: 'card-sub', text: p.subtitle }),
+                p.external ? el('p', { class: 'card-ext', text: p.externalLabel + ' (si apre in una nuova scheda)' }) : null
+            ])
+        ]);
+        if (!p.external) {
+            card.addEventListener('click', function () { homeScroll = window.scrollY; });
+        }
+        grid.appendChild(card);
+    });
+}
+
+/* ---------- Pagina del progetto ---------- */
+
+function galleryNode(images, isVideo, title) {
+    const wrap = el('div', { class: 'gallery' + (isVideo ? ' gallery-video' : '') });
+    if (isVideo) {
+        images.forEach(function (src, i) {
+            wrap.appendChild(el('video', {
+                src: src + '#t=1', controls: '', preload: 'metadata', playsinline: '',
+                'aria-label': title + ', video ' + (i + 1)
+            }));
+        });
+        return wrap;
+    }
+    const more = images.length > THUMBS_SHOWN;
+    images.forEach(function (src, i) {
+        const btn = el('button', { type: 'button', class: 'thumb', 'aria-label': 'Ingrandisci immagine ' + (i + 1) + ' di ' + images.length }, [
+            el('img', { src: src, alt: title + ', immagine ' + (i + 1), loading: 'lazy', decoding: 'async' })
+        ]);
+        if (more && i >= THUMBS_SHOWN) btn.hidden = true;
+        btn.addEventListener('click', function () { openLightbox(images, i, title); });
+        wrap.appendChild(btn);
+    });
+    if (!more) return wrap;
+
+    const holder = el('div', {}, [wrap]);
+    const showAll = el('button', { type: 'button', class: 'btn btn-ghost show-all', text: 'Mostra tutte le ' + images.length + ' immagini' });
+    showAll.addEventListener('click', function () {
+        wrap.querySelectorAll('.thumb[hidden]').forEach(function (b) { b.hidden = false; });
+        showAll.remove();
+    });
+    holder.appendChild(showAll);
+    return holder;
+}
+
+function renderProject(p) {
+    projectView.innerHTML = '';
+
+    const back = el('a', { class: 'back-link', href: '#progetti', text: '‹ Tutti i progetti' });
+    const head = el('header', { class: 'project-head' }, [
+        el('p', { class: 'card-cat', text: p.categories.join(', ') }),
+        el('h1', { class: 'project-title', tabindex: '-1', text: p.title }),
+        el('p', { class: 'project-sub', text: p.subtitle })
+    ]);
+
+    const facts = el('dl', { class: 'facts' });
+    (p.facts || []).forEach(function (f) {
+        facts.appendChild(el('div', {}, [el('dt', { text: f[0] }), el('dd', { text: f[1] })]));
+    });
+
+    const text = el('div', { class: 'project-text' });
+    (p.text || []).forEach(function (t) { text.appendChild(el('p', { text: t })); });
+
+    const intro = el('div', { class: 'project-intro' }, [text, facts]);
+    const body = el('div', { class: 'project-body' });
+
+    if (p.tabs) {
+        const tablist = el('div', { class: 'tabs', role: 'tablist', 'aria-label': 'Fasi del progetto' });
+        const panel = el('div', { class: 'tab-panel', role: 'tabpanel', id: 'tabPanel', tabindex: '0' });
+        const buttons = [];
+
+        function select(index, focus) {
+            buttons.forEach(function (b, i) {
+                b.setAttribute('aria-selected', String(i === index));
+                b.tabIndex = i === index ? 0 : -1;
+            });
+            const tab = p.tabs[index];
+            panel.innerHTML = '';
+            panel.setAttribute('aria-label', tab.label);
+            panel.appendChild(el('p', { class: 'tab-text', text: tab.text }));
+            panel.appendChild(galleryNode(tab.images, false, p.title + ', ' + tab.label));
+            if (focus) buttons[index].focus();
+        }
+
+        p.tabs.forEach(function (tab, i) {
+            const b = el('button', { type: 'button', role: 'tab', class: 'tab', 'aria-controls': 'tabPanel' }, [
+                el('span', { text: tab.label }),
+                el('span', { class: 'tab-count', text: String(tab.images.length) })
+            ]);
+            b.addEventListener('click', function () { select(i, false); });
+            b.addEventListener('keydown', function (e) {
+                if (e.key === 'ArrowRight') select((i + 1) % p.tabs.length, true);
+                if (e.key === 'ArrowLeft') select((i - 1 + p.tabs.length) % p.tabs.length, true);
+            });
+            buttons.push(b);
+            tablist.appendChild(b);
+        });
+        body.appendChild(tablist);
+        body.appendChild(panel);
+        select(0, false);
+    } else {
+        body.appendChild(galleryNode(p.images, p.type === 'video', p.title));
+    }
+
+    /* Progetto successivo (salta quelli che portano fuori dal sito) */
+    const internal = PROJECTS.filter(function (x) { return !x.external; });
+    const next = internal[(internal.indexOf(p) + 1) % internal.length];
+    const foot = el('footer', { class: 'project-foot' }, [
+        el('a', { class: 'next-link', href: '#/progetto/' + next.id }, [
+            el('span', { class: 'next-label', text: 'Progetto successivo' }),
+            el('span', { class: 'next-title', text: next.title })
+        ]),
+        el('a', { class: 'btn btn-primary', href: '#contatti', text: 'Parliamo del tuo progetto' })
+    ]);
+
+    projectView.appendChild(el('div', { class: 'wrap' }, [back, head, intro, body, foot]));
+}
+
+/* ---------- Navigazione: ogni progetto ha il suo indirizzo ---------- */
+
+function route() {
+    const hash = decodeURIComponent(location.hash);
+    const match = hash.match(/^#\/progetto\/([\w-]+)$/);
+    const project = match && byId[match[1]];
+
+    if (project && !project.external) {
+        homeView.hidden = true;
+        projectView.hidden = false;
+        renderProject(project);
+        document.title = project.title + ' | Alice Martinazzoli';
+        window.scrollTo(0, 0);
+        const h = projectView.querySelector('.project-title');
+        if (h) h.focus({ preventScroll: true });
+        return;
+    }
+
+    const cameFromProject = !projectView.hidden;
+    projectView.hidden = true;
+    projectView.innerHTML = '';
+    homeView.hidden = false;
+    document.title = HOME_TITLE;
+
+    if (cameFromProject && hash === '#progetti' && homeScroll !== null) {
+        window.scrollTo(0, homeScroll);
+    } else if (cameFromProject || match) {
+        const target = hash.length > 1 && !match ? document.getElementById(hash.slice(1)) : null;
+        if (target) target.scrollIntoView();
+        else window.scrollTo(0, 0);
+    }
+    homeScroll = null;
+}
+
+/* ---------- Visualizzatore immagini ---------- */
+
+const lightbox = document.getElementById('lightbox');
+const lbImage = document.getElementById('lbImage');
+const lbCounter = document.getElementById('lbCounter');
+let lbList = [];
+let lbIndex = 0;
+let lbTitle = '';
+
+function showLightboxImage(i) {
+    lbIndex = (i + lbList.length) % lbList.length;
+    lbImage.src = lbList[lbIndex];
+    lbImage.alt = lbTitle + ', immagine ' + (lbIndex + 1);
+    lbCounter.textContent = (lbIndex + 1) + ' / ' + lbList.length;
+    const single = lbList.length < 2;
+    document.getElementById('lbPrev').hidden = single;
+    document.getElementById('lbNext').hidden = single;
+}
+
+function openLightbox(list, index, title) {
+    lbList = list;
+    lbTitle = title;
+    showLightboxImage(index);
+    if (typeof lightbox.showModal === 'function') lightbox.showModal();
+    else lightbox.setAttribute('open', '');
+}
+
+function closeLightbox() {
+    if (typeof lightbox.close === 'function') lightbox.close();
+    else lightbox.removeAttribute('open');
+    lbImage.removeAttribute('src');
+}
+
+document.getElementById('lbClose').addEventListener('click', closeLightbox);
+document.getElementById('lbPrev').addEventListener('click', function () { showLightboxImage(lbIndex - 1); });
+document.getElementById('lbNext').addEventListener('click', function () { showLightboxImage(lbIndex + 1); });
+lightbox.addEventListener('click', function (e) { if (e.target === lightbox) closeLightbox(); });
+lightbox.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft') showLightboxImage(lbIndex - 1);
+    if (e.key === 'ArrowRight') showLightboxImage(lbIndex + 1);
 });
 
-function startLoadingAnimation() {
-    const loadingScreen = document.getElementById('loadingScreen');
-    const loadingProgress = document.querySelector('.loading-progress');
-    if (loadingScreen && loadingProgress) {
-        loadingScreen.classList.remove('hidden');
-        setTimeout(function() { loadingProgress.style.width = '100%'; }, 100);
-    }
+/* Scorrimento con il dito sul telefono */
+let touchX = null;
+lightbox.addEventListener('touchstart', function (e) { touchX = e.touches[0].clientX; }, { passive: true });
+lightbox.addEventListener('touchend', function (e) {
+    if (touchX === null) return;
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 50) showLightboxImage(lbIndex + (dx < 0 ? 1 : -1));
+    touchX = null;
+});
+
+/* ---------- Menu su telefono ---------- */
+
+const navToggle = document.getElementById('navToggle');
+const siteNav = document.getElementById('siteNav');
+
+function closeNav() {
+    siteNav.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
 }
+navToggle.addEventListener('click', function () {
+    const open = siteNav.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', String(open));
+});
+siteNav.addEventListener('click', function (e) { if (e.target.tagName === 'A') closeNav(); });
+document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeNav(); });
 
-function finishLoading() {
-    const loadingScreen = document.getElementById('loadingScreen');
-    if (loadingScreen) {
-        loadingScreen.classList.add('hidden');
-        loadingComplete = true;
-        setTimeout(function() {
-            if (loadingScreen.parentNode) loadingScreen.parentNode.removeChild(loadingScreen);
-        }, 800);
-    }
-}
+/* ---------- CV in PDF: stampa la sezione Esperienza, sempre aggiornata ---------- */
 
-function initPortfolio() {
-    initNavigation();
-    initMobileMenu();
-    initAnimations();
-    initProjectHandlers();
-    initGalleryModal();
-    initTouchSupport();
-    initCVDownload();
-    initPowerUpsNavigation();
-    initHeaderClick();
-    initScrollAnimations();
-    initEmailJS();
-    console.log('✅ Portfolio inizializzato completamente');
-}
+document.getElementById('cvBtn').addEventListener('click', function () { window.print(); });
 
-/* ===== POWER-UPS ===== */
-function initPowerUpsNavigation() {
-    const powerUps = document.querySelectorAll('.power-up.clickable');
-    powerUps.forEach(function(powerUp) {
-        powerUp.addEventListener('click', function() {
-            const target = this.getAttribute('data-target');
-            if (target) {
-                const targetButton = document.querySelector(`[data-section="${target}"]`);
-                if (targetButton) targetButton.click();
-            }
-        });
-        powerUp.addEventListener('mouseenter', function() { this.style.transform = 'translateY(-12px) scale(1.02)'; });
-        powerUp.addEventListener('mouseleave', function() { this.style.transform = 'translateY(0) scale(1)'; });
-    });
-}
+/* ---------- Modulo contatti: apre l'email già compilata ---------- */
 
-/* ===== HEADER CLICCABILE ===== */
-function initHeaderClick() {
-    const headerTitle = document.getElementById('headerTitle');
-    if (headerTitle) {
-        headerTitle.addEventListener('click', function(e) {
-            e.preventDefault();
-            document.querySelectorAll('.menu-btn').forEach(btn => btn.classList.remove('active'));
-            document.querySelectorAll('.game-section').forEach(section => section.classList.remove('active'));
-            const homeSection = document.getElementById('home');
-            const homeButton = document.querySelector('[data-section="home"]');
-            if (homeSection && homeButton) {
-                homeSection.classList.add('active');
-                homeButton.classList.add('active');
-                if (isMenuOpen) closeMobileMenu();
-                window.scrollTo(0, 0);
-                setTimeout(function() { animateHomePage(); }, 100);
-            }
-        });
-    }
-}
+document.getElementById('contactForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const f = e.target;
+    const subject = f.subject.value.trim() || 'Richiesta dal portfolio';
+    const body = f.message.value.trim() + '\n\n' + f.name.value.trim();
+    location.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+});
 
-/* ===== SCROLL ANIMATIONS ===== */
-function initScrollAnimations() {
-    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-            if (entry.isIntersecting && entry.target.classList.contains('intro-text')) {
-                animateHomePage();
-            }
-        });
-    }, observerOptions);
-    const introText = document.querySelector('.intro-text');
-    if (introText) observer.observe(introText);
-}
+/* ---------- Avvio ---------- */
 
-/* ===== CV DOWNLOAD ===== */
-function initCVDownload() {
-    const downloadBtn = document.getElementById('downloadCvBtn');
-    if (downloadBtn) {
-        downloadBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            downloadCVPDF();
-        });
-    }
-}
-
-function downloadCVPDF() {
-    showMobileNotification('📄 Preparazione download CV PDF...');
-    const cvHTML = generateCVForPrint();
-    const printWindow = window.open('', '_blank');
-    printWindow.document.write(cvHTML);
-    printWindow.document.close();
-    setTimeout(function() {
-        printWindow.print();
-        setTimeout(function() { printWindow.close(); }, 1000);
-        showMobileNotification('✅ CV pronto per il download PDF!');
-    }, 500);
-}
-
-function generateCVForPrint() {
-    return `<!DOCTYPE html>
-<html lang="it">
-<head>
-<meta charset="UTF-8">
-<title>Alice Martinazzoli - CV</title>
-<style>
-@page { margin: 1cm; size: A4; }
-body { font-family: Arial, sans-serif; margin: 0; padding: 20px; line-height: 1.5; color: #333; background: white; font-size: 12px; }
-.header { text-align: center; margin-bottom: 30px; border-bottom: 3px solid #00d9ff; padding-bottom: 15px; }
-.name { font-size: 28px; font-weight: bold; color: #00d9ff; margin-bottom: 8px; }
-.title { font-size: 16px; color: #666; margin-bottom: 15px; }
-.contact-info { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; font-size: 11px; }
-.section { margin-bottom: 25px; break-inside: avoid; }
-.section-title { font-size: 18px; color: #00d9ff; border-bottom: 2px solid #00d9ff; padding-bottom: 5px; margin-bottom: 15px; font-weight: bold; }
-.experience-item { margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #eee; break-inside: avoid; }
-.job-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 5px; flex-wrap: wrap; }
-.job-title { font-size: 14px; font-weight: bold; color: #333; }
-.job-period { background: #00d9ff; color: white; padding: 3px 8px; border-radius: 10px; font-size: 10px; font-weight: bold; }
-.company { color: #ff6b9d; font-weight: bold; margin-bottom: 8px; font-size: 13px; }
-.description { margin: 0; padding-left: 0; }
-.description li { margin-bottom: 5px; list-style-type: none; position: relative; padding-left: 15px; font-size: 11px; }
-.description li::before { content: "▶"; position: absolute; left: 0; color: #00d9ff; font-size: 8px; top: 2px; }
-.skills-section { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-top: 10px; }
-.skill-category { background: #f8f9fa; padding: 12px; border-radius: 8px; border-left: 3px solid #00d9ff; }
-.skill-category h4 { color: #00d9ff; margin-bottom: 8px; font-size: 12px; margin-top: 0; }
-.skill-list { list-style: none; padding: 0; margin: 0; }
-.skill-list li { margin-bottom: 4px; padding: 3px 6px; background: white; border-radius: 4px; font-size: 10px; }
-.intro { background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #00d9ff; font-size: 11px; line-height: 1.4; }
-.footer-info { margin-top: 30px; text-align: center; font-size: 10px; color: #666; border-top: 1px solid #eee; padding-top: 15px; }
-</style>
-</head>
-<body>
-<div class="header">
-<div class="name">Alice Martinazzoli</div>
-<div class="title">Graphic Designer - UX/UI Designer</div>
-<div class="contact-info">
-<div>📧 alicemartinazzoli95@icloud.com</div>
-<div>📱 +39 346 1732527</div>
-<div>🌐 behance.net/alicemarti563e</div>
-</div>
-</div>
-<div class="intro"><strong>Profilo Professionale:</strong> Diplomata in Grafica Pubblicitaria presso l'International School of Comics, ho completato un Master in UX/UI Design presso Start2Impact University nel 2025. Finalista al concorso "Talenti Accesi" di Torcha con il restyling della lattina BOEM. Esperienza su set cinematografici internazionali e autrice del libro "Gino Zamprioli: Make-up Artist dal 1969". Competenze tecniche acquisite anche come Salesforce Developer nel 2023.</div>
-<div class="section">
-<h2 class="section-title">Esperienza Lavorativa</h2>
-<div class="experience-item"><div class="job-header"><span class="job-title">Graphic Designer</span><span class="job-period">2023-2024</span></div><div class="company">LGA Service - Roma</div><ul class="description"><li>Sviluppo di materiali di marketing, presentazioni e comunicazioni visive</li><li>Miglioramento dell'immagine aziendale attraverso design coeso e d'impatto</li></ul></div>
-<div class="experience-item"><div class="job-header"><span class="job-title">Graphic Designer</span><span class="job-period">2022</span></div><div class="company">Panorama Films srl - Roma</div><ul class="description"><li>Esperienza internazionale serie TV "Concordia" (ZDF STUDIOS)</li><li>Creazione packaging, etichette, segnaletica e grafiche per veicoli</li></ul></div>
-<div class="experience-item"><div class="job-header"><span class="job-title">Graphic Designer</span><span class="job-period">2018-2021</span></div><div class="company">MP Partners - Costa Volpino (BG)</div><ul class="description"><li>Crescita da Junior a referente Comunicazione e Marketing</li><li>Sviluppo campagne visive, materiali editoriali e branding</li></ul></div>
-<div class="experience-item"><div class="job-header"><span class="job-title">Social Media Manager</span><span class="job-period">2017</span></div><div class="company">Cassette Venturi - Darfo B.T. (BS)</div><ul class="description"><li>Sviluppo piano editoriale strategico per social media</li></ul></div>
-</div>
-<div class="section">
-<h2 class="section-title">Istruzione</h2>
-<div class="experience-item"><div class="job-header"><span class="job-title">Master UX/UI Designer</span><span class="job-period">2025</span></div><div class="company">Start2Impact University</div></div>
-<div class="experience-item"><div class="job-header"><span class="job-title">Salesforce Developer</span><span class="job-period">2023</span></div><div class="company">Generation Italy</div></div>
-<div class="experience-item"><div class="job-header"><span class="job-title">Diploma Grafica Pubblicitaria</span><span class="job-period">2015-2018</span></div><div class="company">International School of Comics - Brescia</div></div>
-</div>
-<div class="section">
-<h2 class="section-title">Competenze</h2>
-<div class="skills-section">
-<div class="skill-category"><h4>Design Tools</h4><ul class="skill-list"><li>Adobe Creative Suite (Master)</li><li>Figma (Expert)</li><li>Sketch (Advanced)</li></ul></div>
-<div class="skill-category"><h4>Specializzazioni</h4><ul class="skill-list"><li>Graphic Design (Master)</li><li>UX/UI Design (Expert)</li><li>Brand Identity (Expert)</li></ul></div>
-</div>
-</div>
-<div class="footer-info"><p><strong>Portfolio online:</strong> https://www.behance.net/alicemarti563e</p></div>
-</body>
-</html>`;
-}
-
-/* ===== NAVIGAZIONE ===== */
-function initNavigation() {
-    const menuButtons = document.querySelectorAll('.menu-btn');
-    const sections = document.querySelectorAll('.game-section');
-
-    menuButtons.forEach(function(button) {
-        button.addEventListener('click', function() {
-            const targetSection = this.getAttribute('data-section');
-            menuButtons.forEach(btn => btn.classList.remove('active'));
-            sections.forEach(section => section.classList.remove('active'));
-            this.classList.add('active');
-            const targetElement = document.getElementById(targetSection);
-            if (targetElement) {
-                targetElement.classList.add('active');
-                if (isMenuOpen) closeMobileMenu();
-                if (window.innerWidth <= 768) window.scrollTo(0, 0);
-                setTimeout(function() { handleSectionAnimations(targetSection); }, 300);
-            }
-        });
-    });
-
-    document.addEventListener('keydown', function(e) {
-        if (window.innerWidth > 768 && loadingComplete) {
-            const keyMap = ['1', '2', '3', '4', '5', '6'];
-            const index = keyMap.indexOf(e.key);
-            if (index >= 0 && menuButtons[index]) menuButtons[index].click();
-        }
-        if (e.key === 'Escape' && isMenuOpen) closeMobileMenu();
-    });
-}
-
-/* ===== MENU MOBILE ===== */
-function initMobileMenu() {
-    const hamburgerBtn = document.getElementById('hamburgerBtn');
-    const gameMenu = document.getElementById('gameMenu');
-    const menuOverlay = document.getElementById('menuOverlay');
-    if (!hamburgerBtn || !gameMenu || !menuOverlay) return;
-
-    hamburgerBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        toggleMobileMenu();
-    });
-    menuOverlay.addEventListener('click', function() { if (isMenuOpen) closeMobileMenu(); });
-    window.addEventListener('resize', function() {
-        if (window.innerWidth > 768 && isMenuOpen) closeMobileMenu();
-    });
-}
-
-function toggleMobileMenu() { isMenuOpen ? closeMobileMenu() : openMobileMenu(); }
-
-function openMobileMenu() {
-    const hamburgerBtn = document.getElementById('hamburgerBtn');
-    const gameMenu = document.getElementById('gameMenu');
-    const menuOverlay = document.getElementById('menuOverlay');
-    if (hamburgerBtn && gameMenu && menuOverlay) {
-        hamburgerBtn.classList.add('active');
-        gameMenu.classList.add('active');
-        menuOverlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
-        isMenuOpen = true;
-    }
-}
-
-function closeMobileMenu() {
-    const hamburgerBtn = document.getElementById('hamburgerBtn');
-    const gameMenu = document.getElementById('gameMenu');
-    const menuOverlay = document.getElementById('menuOverlay');
-    if (hamburgerBtn && gameMenu && menuOverlay) {
-        hamburgerBtn.classList.remove('active');
-        gameMenu.classList.remove('active');
-        menuOverlay.classList.remove('active');
-        document.body.style.overflow = '';
-        isMenuOpen = false;
-    }
-}
-
-/* ===== TOUCH SUPPORT ===== */
-function initTouchSupport() {
-    if ('ontouchstart' in window) document.body.classList.add('touch-device');
-
-    const buttons = document.querySelectorAll('button, .contact-btn, .mission-btn, .power-up');
-    buttons.forEach(function(button) {
-        button.addEventListener('touchstart', function() { this.classList.add('touch-active'); });
-        button.addEventListener('touchend', function() {
-            const self = this;
-            setTimeout(function() { self.classList.remove('touch-active'); }, 150);
-        });
-    });
-
-    if (window.innerWidth <= 768) initSwipeNavigation();
-}
-
-function initSwipeNavigation() {
-    let startX = 0, startY = 0;
-    const minSwipeDistance = 50;
-
-    document.addEventListener('touchstart', function(e) {
-        if (isMenuOpen) return;
-        startX = e.touches[0].clientX;
-        startY = e.touches[0].clientY;
-    });
-
-    document.addEventListener('touchend', function(e) {
-        if (!startX || !startY || isMenuOpen) return;
-        const endX = e.changedTouches[0].clientX;
-        const endY = e.changedTouches[0].clientY;
-        const diffX = startX - endX;
-        const diffY = startY - endY;
-
-        if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > minSwipeDistance) {
-            const sections = ['home', 'about', 'projects', 'skills', 'cv', 'contact'];
-            const currentSection = document.querySelector('.game-section.active');
-            const currentIndex = sections.indexOf(currentSection.id);
-            let newIndex = diffX > 0 ? currentIndex + 1 : currentIndex - 1;
-            if (newIndex >= 0 && newIndex < sections.length) {
-                const button = document.querySelector(`[data-section="${sections[newIndex]}"]`);
-                if (button) button.click();
-            }
-        }
-        startX = 0; startY = 0;
-    });
-}
-
-/* ===== ANIMAZIONI SEZIONI ===== */
-function handleSectionAnimations(sectionName) {
-    switch(sectionName) {
-        case 'home': animateHomePage(); break;
-        case 'about': animateStats(); break;
-        case 'cv': animateCV(); break;
-        case 'projects': animateProjects(); break;
-        case 'skills': animateSkills(); break;
-        case 'contact': animateContact(); break;
-    }
-}
-
-function animateHomePage() {
-    const animatedElements = document.querySelectorAll('.welcome-title span, #home .game-description, #home .power-up, .character-illustration');
-    animatedElements.forEach(function(element) {
-        element.style.animation = 'none';
-        element.offsetHeight;
-        element.style.animation = null;
-    });
-}
-
-function animateStats() {
-    const statFills = document.querySelectorAll('.stat-fill');
-    statFills.forEach(function(fill, index) {
-        const targetWidth = fill.getAttribute('data-width');
-        fill.style.width = '0%';
-        setTimeout(function() { fill.style.width = targetWidth; }, index * 200 + 100);
-    });
-}
-
-function animateCV() {
-    const cvItems = document.querySelectorAll('.cv-item');
-    cvItems.forEach(function(item, index) {
-        item.style.opacity = '0';
-        item.style.transform = 'translateY(20px)';
-        setTimeout(function() {
-            item.style.transition = 'all 0.5s ease';
-            item.style.opacity = '1';
-            item.style.transform = 'translateY(0)';
-        }, index * 100);
-    });
-}
-
-function animateProjects() {
-    const projectCards = document.querySelectorAll('.mission-card');
-    projectCards.forEach(function(card, index) {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        setTimeout(function() {
-            card.style.transition = 'all 0.6s ease';
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
-        }, index * 100);
-    });
-}
-
-function animateSkills() {
-    const skillItems = document.querySelectorAll('.skill-item');
-    skillItems.forEach(function(item, index) {
-        item.style.opacity = '0';
-        item.style.transform = 'scale(0.8)';
-        setTimeout(function() {
-            item.style.transition = 'all 0.4s ease';
-            item.style.opacity = '1';
-            item.style.transform = 'scale(1)';
-        }, index * 100);
-    });
-}
-
-function animateContact() {
-    const card = document.querySelector('.contact-card');
-    const form = document.querySelector('.contact-form-container');
-    if (card) {
-        card.style.opacity = '0';
-        card.style.transform = 'translateX(-30px)';
-        setTimeout(function() {
-            card.style.transition = 'all 0.5s ease';
-            card.style.opacity = '1';
-            card.style.transform = 'translateX(0)';
-        }, 200);
-    }
-    if (form) {
-        form.style.opacity = '0';
-        form.style.transform = 'translateX(30px)';
-        setTimeout(function() {
-            form.style.transition = 'all 0.5s ease';
-            form.style.opacity = '1';
-            form.style.transform = 'translateX(0)';
-        }, 400);
-    }
-}
-
-function initAnimations() {
-    const sprite = document.querySelector('.character-sprite');
-    if (sprite) {
-        setInterval(function() {
-            sprite.style.transform = 'scale(1.05)';
-            setTimeout(function() { sprite.style.transform = 'scale(1)'; }, 1000);
-        }, 4000);
-    }
-}
-
-/* ===== GALLERY PROGETTI ===== */
-function buildImages(folder, start, end, padded, cover, ext) {
-    ext = ext || 'webp';
-    const arr = [];
-    if (cover) arr.push(`img/projects/${folder}/Copertina.${ext}`);
-    for (let i = start; i <= end; i++) {
-        const num = padded ? String(i).padStart(2, '0') : i;
-        arr.push(`img/projects/${folder}/${num}.${ext}`);
-    }
-    return arr;
-}
-
-const projectsGalleryData = {
-    boem: {
-        title: 'Restyling Lattina BOEM',
-        description: 'Finalista al concorso "Talenti Accesi" di Torcha nel 2025 con una proposta creativa per il restyling della lattina, tra branding e package design.',
-        tags: ['Brand Design', 'Package Design', 'Creative Strategy'],
-        images: buildImages('BOEM', 1, 6, true, false)
-    },
-    ginoZamprioli: {
-        title: '"Gino Zamprioli: Make-up Artist dal 1969"',
-        description: 'Progetto editoriale completo dedicato a una figura iconica del make-up, dalla ricerca alla realizzazione grafica del libro.',
-        tags: ['Editorial Design', 'Layout', 'Typography'],
-        images: buildImages('Design Book', 1, 5, true, false)
-    },
-    cinetattoo: {
-        title: 'Custom Fake Tattoos - Birra Moretti',
-        description: 'Tatuaggi finti personalizzati realizzati per lo spot pubblicitario Birra Moretti, tra design realistico e applicazione professionale.',
-        tags: ['Custom Design', 'Advertising', 'Tattoo Art'],
-        images: [
-            'img/projects/Cinetattoo/Copertina.webp',
-            'img/projects/Cinetattoo/01.webp',
-            'img/projects/Cinetattoo/02.webp',
-            'img/projects/Cinetattoo/03.webp',
-            'img/projects/Cinetattoo/04.webp',
-            'img/projects/Cinetattoo/05.webp',
-            'img/projects/Cinetattoo/06.png'
-        ]
-    },
-    logoDesign: {
-        title: 'Logo Design - Planty of Food',
-        description: "Redesign del logo Planty of Food per promuovere un'alimentazione plant-based sostenibile e accessibile.",
-        tags: ['Logo Design', 'Brand Identity', 'Sustainability'],
-        images: buildImages('Logo design', 1, 19, true, true)
-    },
-    socialMedia: {
-        title: 'Social Media Design',
-        description: 'Creazione di contenuti grafici per social media e sviluppo di campagne visual coordinate per diversi brand.',
-        tags: ['Social Media', 'Content Design', 'Digital Marketing'],
-        images: buildImages('Graphic design', 1, 15, true, false)
-    },
-    resolutionTech: {
-        title: 'Resolution Tech - Sito Web',
-        description: "Redesign completo del sito e dell'identità digitale di Resolution Tech, dal Figma al lancio online.",
-        tags: ['Web Design', 'Brand Identity', 'Figma'],
-        images: buildImages('Resolution Tech', 1, 20, false, false, 'jpg')
-    },
-    presentazioneResolutionTech: {
-        title: 'Resolution Tech - Presentazione',
-        description: 'Materiale di presentazione del progetto: brand guidelines, mockup e comunicazione al cliente.',
-        tags: ['Presentation', 'Brand Guidelines'],
-        images: buildImages('Presentazione Resolution Tech', 1, 42, false, false, 'jpg')
-    },
-    videoEditing: {
-        title: 'Video Editing',
-        description: 'Selezione di montaggi video tra contenuti social e produzioni più curate, tra ritmo, storytelling e montaggio dinamico.',
-        tags: ['Video Editing', 'CapCut', 'Storytelling'],
-        type: 'video',
-        images: buildImages('Video editing', 1, 5, true, false, 'mp4')
-    },
-    jojob: {
-        title: 'Jojob RT - Complete UX/UI Project',
-        description: "Progetto UX/UI completo dalla Discovery all'interfaccia finale: ricerca, accessibilità, wireframe, UI e test con gli utenti.",
-        tags: ['UX Research', 'Accessibility', 'Wireframing', 'UI Design'],
-        tabs: [
-            { label: 'Discovery', images: buildImages('Discovery', 1, 78, true, true) },
-            { label: 'Accessibilità', images: buildImages('Accessibilità', 1, 61, true, true) },
-            { label: 'Wireframe', images: buildImages('Wireframe', 1, 44, true, true) },
-            { label: 'User Interface', images: buildImages('User Interface', 1, 26, true, false) },
-            { label: 'User Test', images: [
-                ...buildImages('User Test parte 1', 1, 13, false, false, 'jpg'),
-                ...buildImages('User Test parte 2', 1, 12, false, false, 'jpg')
-            ]}
-        ]
-    }
-};
-
-let currentGalleryImages = [];
-let currentGalleryIndex = 0;
-let currentGalleryType = 'image';
-
-function openGallery(key) {
-    const project = projectsGalleryData[key];
-    if (!project) return;
-
-    currentGalleryType = project.type === 'video' ? 'video' : 'image';
-
-    document.getElementById('galleryTitle').textContent = project.title;
-    document.getElementById('galleryDescription').textContent = project.description;
-
-    const tagsContainer = document.getElementById('galleryTags');
-    tagsContainer.innerHTML = project.tags.map(t => `<span class="tech-badge">${t}</span>`).join('');
-
-    const tabsContainer = document.getElementById('galleryTabs');
-    tabsContainer.innerHTML = '';
-
-    if (project.tabs) {
-        project.tabs.forEach((tab, index) => {
-            const btn = document.createElement('button');
-            btn.className = 'gallery-tab-btn' + (index === 0 ? ' active' : '');
-            btn.textContent = tab.label;
-            btn.addEventListener('click', function() {
-                document.querySelectorAll('.gallery-tab-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                loadGalleryImages(tab.images);
-            });
-            tabsContainer.appendChild(btn);
-        });
-        loadGalleryImages(project.tabs[0].images);
-    } else {
-        loadGalleryImages(project.images);
-    }
-
-    document.getElementById('galleryModal').classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
-
-function loadGalleryImages(images) {
-    currentGalleryImages = images;
-    currentGalleryIndex = 0;
-    renderGalleryDots();
-    showGalleryImage(0);
-}
-
-function showGalleryImage(index) {
-    if (index < 0) index = currentGalleryImages.length - 1;
-    if (index >= currentGalleryImages.length) index = 0;
-    currentGalleryIndex = index;
-
-    const img = document.getElementById('galleryImage');
-    const video = document.getElementById('galleryVideo');
-
-    if (currentGalleryType === 'video') {
-        video.pause();
-        video.src = currentGalleryImages[index];
-        video.style.display = 'block';
-        img.style.display = 'none';
-    } else {
-        video.pause();
-        video.removeAttribute('src');
-        video.style.display = 'none';
-        img.style.display = 'block';
-        img.src = currentGalleryImages[index];
-    }
-
-    document.querySelectorAll('.gallery-dot').forEach((dot, i) => {
-        dot.classList.toggle('active', i === index);
-    });
-    updateGalleryCounter();
-}
-
-function renderGalleryDots() {
-    const dotsContainer = document.getElementById('galleryDots');
-    dotsContainer.innerHTML = '';
-    const maxDots = 12;
-    const total = currentGalleryImages.length;
-
-    if (total <= maxDots) {
-        currentGalleryImages.forEach((_, i) => {
-            const dot = document.createElement('button');
-            dot.className = 'gallery-dot' + (i === 0 ? ' active' : '');
-            dot.addEventListener('click', () => showGalleryImage(i));
-            dotsContainer.appendChild(dot);
-        });
-    } else {
-        const counter = document.createElement('span');
-        counter.style.color = 'var(--text-muted)';
-        counter.style.fontSize = '12px';
-        counter.id = 'galleryCounter';
-        counter.textContent = `1 / ${total}`;
-        dotsContainer.appendChild(counter);
-    }
-}
-
-function updateGalleryCounter() {
-    const counter = document.getElementById('galleryCounter');
-    if (counter) counter.textContent = `${currentGalleryIndex + 1} / ${currentGalleryImages.length}`;
-}
-
-function closeGallery() {
-    const video = document.getElementById('galleryVideo');
-    if (video) video.pause();
-    document.getElementById('galleryModal').classList.remove('active');
-    document.body.style.overflow = '';
-}
-
-function initGalleryModal() {
-    document.getElementById('galleryClose').addEventListener('click', closeGallery);
-    document.getElementById('galleryModal').addEventListener('click', function(e) {
-        if (e.target === this) closeGallery();
-    });
-    document.getElementById('galleryPrev').addEventListener('click', function() { showGalleryImage(currentGalleryIndex - 1); });
-    document.getElementById('galleryNext').addEventListener('click', function() { showGalleryImage(currentGalleryIndex + 1); });
-    document.addEventListener('keydown', function(e) {
-        if (!document.getElementById('galleryModal').classList.contains('active')) return;
-        if (e.key === 'Escape') closeGallery();
-        if (e.key === 'ArrowLeft') showGalleryImage(currentGalleryIndex - 1);
-        if (e.key === 'ArrowRight') showGalleryImage(currentGalleryIndex + 1);
-    });
-}
-
-function initProjectHandlers() {
-    document.addEventListener('click', function(e) {
-        if (e.target.classList.contains('mission-btn')) {
-            const card = e.target.closest('.mission-card');
-            const projectKey = card.getAttribute('data-project');
-            const externalUrl = card.getAttribute('data-external');
-            if (projectKey) openGallery(projectKey);
-            else if (externalUrl) window.open(externalUrl, '_blank');
-        }
-    });
-}
-
-/* ===== NOTIFICA MOBILE ===== */
-function showMobileNotification(message) {
-    const toast = document.createElement('div');
-    toast.style.cssText = `
-        position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
-        background: #1a1f35; color: #ffffff; padding: 20px; border-radius: 16px;
-        border: 2px solid #00d9ff; z-index: 9999; text-align: center; font-weight: 600;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); max-width: 300px;
-    `;
-    toast.textContent = message;
-    document.body.appendChild(toast);
-    setTimeout(function() {
-        if (document.body.contains(toast)) document.body.removeChild(toast);
-    }, 2000);
-}
-
-/* ===== EMAILJS ===== */
-function initEmailJS() {
-    emailjs.init("TUA_PUBLIC_KEY");
-
-    const form = document.getElementById('contactForm');
-    const submitBtn = document.getElementById('submitBtn');
-    const formStatus = document.getElementById('formStatus');
-
-    if (form) {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            submitBtn.disabled = true;
-            submitBtn.classList.add('sending');
-            submitBtn.innerHTML = '<span>INVIO IN CORSO...</span>';
-            formStatus.className = 'form-status';
-            formStatus.textContent = '';
-
-            const templateParams = {
-                user_name: form.user_name.value,
-                user_email: form.user_email.value,
-                subject: form.subject.value,
-                message: form.message.value,
-                to_name: 'Alice Martinazzoli'
-            };
-
-            emailjs.send('TUO_SERVICE_ID', 'TUO_TEMPLATE_ID', templateParams)
-                .then(function() {
-                    formStatus.className = 'form-status success';
-                    formStatus.textContent = '✅ Messaggio inviato con successo! Ti risponderò al più presto.';
-                    form.reset();
-                    submitBtn.disabled = false;
-                    submitBtn.classList.remove('sending');
-                    submitBtn.innerHTML = '<span>INVIA MESSAGGIO</span>';
-                    setTimeout(function() {
-                        formStatus.className = 'form-status';
-                        formStatus.textContent = '';
-                    }, 5000);
-                }, function() {
-                    formStatus.className = 'form-status error';
-                    formStatus.textContent = "❌ Errore nell'invio. Per favore riprova o contattami direttamente via email.";
-                    submitBtn.disabled = false;
-                    submitBtn.classList.remove('sending');
-                    submitBtn.innerHTML = '<span>INVIA MESSAGGIO</span>';
-                });
-        });
-    }
-}
-
-console.log('✅ Portfolio JavaScript completo caricato!');
+renderFilters();
+renderGrid();
+window.addEventListener('hashchange', route);
+route();
